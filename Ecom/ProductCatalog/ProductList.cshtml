@@ -6,43 +6,37 @@
 
     @foreach (var product in Model.Products)
     {
-@*       <div class="card" style="width: 18rem;">
-        <img src="@product.DefaultImage" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">@product.Name</h5>
-          <p class="card-text">@product.ShortDescription</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+            <div class="card">
+                <!--Product Image-->
+                <img src="@product.DefaultImage.Value"
+                     class="card-img-top" alt="@product.Name" />
+                <div class="card-body">
+                    <!--If there's a discount, show price before discount-->
+                    @if (product.Price.Price != product.PriceBeforeDiscount.Price)
+                    {
+                        <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted"></a></p>
+                            <p class="small text-danger"><s>@product.PriceBeforeDiscount.PriceFormatted</s></p>
+                        </div>
+                    }
+                    <!--Price-->
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">@product.Name</h5>
+                        <h5 class="text-dark mb-0">@product.Price.PriceFormatted</h5>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="text-muted mb-0">Available: <span class="fw-bold">@product.StockLevel</span></p>
+
+                        <button type="submit" class="btn btn-primary btn-sm" name="CartCmd" Value="Add">Add to cart</button>
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-      </div> *@
-
-            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp"
-            class="card-img-top" alt="Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1199</s></p>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">@product.Name</h5>
-              <h5 class="text-dark mb-0">@product.Price.PriceFormatted</h5>
-            </div>
-
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-              <div class="ms-auto text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
     }
 
