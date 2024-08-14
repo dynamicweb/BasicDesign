@@ -1,4 +1,13 @@
-﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+﻿@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.Frontend
+@using Dynamicweb.Content
+
+@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+
+@{
+    var pageService = new Dynamicweb.Content.PageService();
+    var cartPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "cart");
+}
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
@@ -15,12 +24,14 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="@node.Link">@node.Name</a>
                         </li>
-                    } else if (node.IsClickable == false)
+                    }
+                    else if (node.IsClickable == false)
                     {
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">@node.Name</a>
                         </li>
-                    } else
+                    }
+                    else
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="@node.Link">@node.Name</a>
@@ -28,6 +39,12 @@
                     }
                 }
             </ul>
+        </div>
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <a class="text-reset me-3" href="/Default.aspx?ID=@cartPage.ID">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
         </div>
     </div>
 </nav>
