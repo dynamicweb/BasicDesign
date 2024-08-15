@@ -1,0 +1,43 @@
+﻿@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@inherits ViewModelTemplate<ProductListViewModel>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    @foreach (var product in Model.Products)
+    {
+
+        <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+            <div class="card">
+                <!--Product Image-->
+                <img src="@product.DefaultImage.Value"
+                     class="card-img-top" alt="@product.Name" />
+                <div class="card-body">
+                    <!--If there's a discount, show price before discount-->
+                    @if (product.Price.Price != product.PriceBeforeDiscount.Price)
+                    {
+                        <div class="d-flex justify-content-between">
+                            <p class="small"><a href="#!" class="text-muted"></a></p>
+                            <p class="small text-danger"><s>@product.PriceBeforeDiscount.PriceFormatted</s></p>
+                        </div>
+                    }
+                    <!--Price-->
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="mb-0">@product.Name</h5>
+                        <h5 class="text-dark mb-0">@product.Price.PriceFormatted</h5>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="text-muted mb-0">Available: <span class="fw-bold">@product.StockLevel</span></p>
+                        <form method="post">
+                            <input type="hidden" name="ProductId" id="ProductId" value="@product.Id" />
+                            <button type="submit" class="btn btn-primary btn-sm" name="CartCmd" Value="Add">Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>

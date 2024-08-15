@@ -1,0 +1,112 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<div class="col-md-12">
+    <h3>Receipt for @GetString("Ecom:Order.ID")</h3>
+    <p>Date: @GetDate("Ecom:Order.Date").ToShortDateString()</p>
+
+    <!--Orderlines etc.-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Translate("Product_name", "Product name")</th>
+                <th>@Translate("Quantity", "Quantity")</th>
+                <th>@Translate("Price", "Price")</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var line in GetLoop("OrderLines"))
+            {
+                <tr>
+                    <td>
+                        <a href='@line.GetValue("Ecom:Order:OrderLine.ProductLink")'>
+                            @line.GetValue("Ecom:Order:OrderLine.ProductName.Short")
+                            @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.ProductVariantText")))
+                            {
+                                @: (@line.GetString("Ecom:Order:OrderLine.ProductVariantText"))
+                            }
+                            @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.UnitID")))
+                            {
+                                @: (@line.GetString("Ecom:Order:OrderLine.UnitName"))
+                            }
+                        </a>
+                        <!--Order line fields-->
+                        @foreach (var field in line.GetLoop("Order.OrderLineFields"))
+                        {
+                            if (!string.IsNullOrWhiteSpace(@field.GetString("Ecom:Order:OrderLine.OrderLineField.Value")))
+                            {
+                                <div style="font-size:12px;"><i>@field.GetString("Ecom:Order:OrderLine.OrderLineField.Name"): @field.GetString("Ecom:Order:OrderLine.OrderLineField.Value")</i></div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (line.GetString("Ecom:Order:OrderLine.IsDiscount") == "true")
+                        {
+                            <span></span>
+                        }
+                        else
+                        {
+                            @line.GetValue("Ecom:Order:OrderLine.Quantity")
+                        }
+                    </td>
+                    <td>@line.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+
+                    <td>
+                    </td>
+                </tr>
+
+                foreach (var bomItem in GetLoop("BOMItems"))
+                {
+                    <tr>
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.ProductName.Short")</td>
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.Quantity")</td>
+                        <td>@bomItem.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>Shipping (@GetString("Ecom:Order.ShippingMethod"))</td>
+                <td></td>
+                <td>@GetValue("Ecom:Order.ShippingFee")</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Payment (@GetString("Ecom:Order.PaymentMethod"))</td>
+                <td></td>
+                <td>@GetValue("Ecom:Order.PaymentFee")</td>
+                <td></td>
+            </tr>
+
+            <tr class="total">
+                <th>@Translate("Total")</th>
+                <th></th>
+                <th class="amount">@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <div class="row g-0">
+        <div class="col-md-6 mb-4">
+            <h4>Shipped To</h4>
+            <div>@GetString("Ecom:Order.Customer.FirstName") @GetString("Ecom:Order.Customer.Surname")</div>
+            <div>@GetString("Ecom:Order.Customer.Address")</div>
+            <div>@GetString("Ecom:Order.Customer.Zip") @GetString("Ecom:Order.Customer.City")</div>
+            <div>@GetString("Ecom:Order.Customer.Country")</div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <h4>Billed to</h4>
+            <div>@GetString("Ecom:Order.Delivery.FirstName") @GetString("Ecom:Order.Delivery.Surname")</div>
+            <div>@GetString("Ecom:Order.Delivery.Address")</div>
+            <div>@GetString("Ecom:Order.Delivery.Zip") @GetString("Ecom:Order.Delivery.City")</div>
+            <div>@GetString("Ecom:Order.Delivery.Country")</div>
+        </div>
+    </div>
+
+</div>
