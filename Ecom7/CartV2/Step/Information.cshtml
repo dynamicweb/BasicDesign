@@ -4,30 +4,30 @@
 <!--Cart contents-->
 @if (GetBoolean("Ecom:Order.IsEmpty"))
 {
-    <div class="card card-spaced col-md-12">
-        <h3>Cart Content</h3>
+    <div class="col-md-12">
+        <h3>Shopping Cart</h3>
         <div class="alert alert-info">Your cart is empty</div>
     </div>
 }
 else
 {
-    <div class="card card-spaced col-md-12">
-        <h3>Cart Content</h3>
-        <table class="table orderlines">
+    <div class="col-md-12">
+        <h3>Shopping Cart</h3>
+        <table class="table">
             <thead>
                 <tr>
-                    <th class="name">@Translate("Product_name", "Product name")</th>
-                    <th class="quantity">@Translate("Quantity", "Quantity")</th>
-                    <th class="amount">@Translate("Price", "Price")</th>
-                    <th>CrtCmd</th>
+                    <th>@Translate("Product_name", "Product name")</th>
+                    <th>@Translate("Quantity", "Quantity")</th>
+                    <th>@Translate("Price", "Price")</th>
+                    <th></th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach (var line in GetLoop("OrderLines"))
                 {
-                    <tr data-product-auto-id='@line.GetValue("Ecom:Product.AutoID")'>
-                        <td class="name">
+                    <tr>
+                        <td>
                             <a href='@line.GetValue("Ecom:Order:OrderLine.ProductLink")'>
                                 @line.GetValue("Ecom:Order:OrderLine.ProductName.Short")
                                 @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.ProductVariantText")))
@@ -48,7 +48,7 @@ else
                                 }
                             }
                         </td>
-                        <td class="quantity">
+                        <td>
                             @if (line.GetString("Ecom:Order:OrderLine.IsDiscount") == "true")
                             {
                                 <span></span>
@@ -57,10 +57,9 @@ else
                             {
                                 @line.GetValue("Ecom:Order:OrderLine.Quantity")
                             }
-
                         </td>
-                        <td class="amount">@line.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
-                        <td class="actions">
+                        <td>@line.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                        <td>
                             @if (line.GetBoolean("Ecom:Order:OrderLine.IsProduct"))
                             {
                                 <!--Incorderline, decorderline, delorderline-->
@@ -70,47 +69,29 @@ else
                                     <button class="btn btn-light" type="submit" name="CartCmd" value='DecOrderline'><span class="fa fa-minus"></span></button>
                                     <button class="btn btn-light" type="submit" name="CartCmd" value="DelOrderLine"><span class="fa fa-trash"></span></button>
                                 </form>
-
                             }
                         </td>
                         <td>
                         </td>
                     </tr>
-
-                    foreach (var bomItem in GetLoop("BOMItems"))
-                    {
-                        <tr class="bom-item">
-                            <td>@bomItem.GetValue("Ecom:Order:OrderLine.ProductName.Short")</td>
-                            <td>@bomItem.GetValue("Ecom:Order:OrderLine.Quantity")</td>
-                            <td>@bomItem.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
-                            <td></td>
-                        </tr>
-                    }
-
                 }
             </tbody>
 
             <tfoot>
                 <tr>
-                    <td>Shipping (@GetString("Ecom:Order.ShippingMethod"))</td>
-                    <td></td>
-                    <td>@GetValue("Ecom:Order.ShippingFee")</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Payment (@GetString("Ecom:Order.PaymentMethod"))</td>
-                    <td></td>
-                    <td>@GetValue("Ecom:Order.PaymentFee")</td>
-                    <td></td>
-                </tr>
-                <tr class="total">
                     <th>@Translate("Total")</th>
                     <th></th>
-                    <th class="amount">@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</th>
+                    <th>@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</th>
                     <th></th>
                 </tr>
             </tfoot>
 
         </table>
     </div>
+
+    <form name="ordersubmit" id="ordersubmit" method="post" role="form">
+        <div class="col-md-12">
+            <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Go_to_checkout", "Go to checkout")</button>
+        </div>
+    </form>
     }

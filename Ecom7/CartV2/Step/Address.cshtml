@@ -1,0 +1,220 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+
+<div class="col-md-12">
+    <h3>Shopping Cart</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Translate("Product_name", "Product name")</th>
+                <th>@Translate("Quantity", "Quantity")</th>
+                <th>@Translate("Price", "Price")</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var line in GetLoop("OrderLines"))
+            {
+                <tr>
+                    <td>
+                        <a href='@line.GetValue("Ecom:Order:OrderLine.ProductLink")'>
+                            @line.GetValue("Ecom:Order:OrderLine.ProductName.Short")
+                            @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.ProductVariantText")))
+                            {
+                                @: (@line.GetString("Ecom:Order:OrderLine.ProductVariantText"))
+                            }
+                            @if (!string.IsNullOrWhiteSpace(line.GetString("Ecom:Order:OrderLine.UnitID")))
+                            {
+                                @: (@line.GetString("Ecom:Order:OrderLine.UnitName"))
+                            }
+                        </a>
+                        <!--Order line fields-->
+                        @foreach (var field in line.GetLoop("Order.OrderLineFields"))
+                        {
+                            if (!string.IsNullOrWhiteSpace(@field.GetString("Ecom:Order:OrderLine.OrderLineField.Value")))
+                            {
+                                <div style="font-size:12px;"><i>@field.GetString("Ecom:Order:OrderLine.OrderLineField.Name"): @field.GetString("Ecom:Order:OrderLine.OrderLineField.Value")</i></div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (line.GetString("Ecom:Order:OrderLine.IsDiscount") == "true")
+                        {
+                            <span></span>
+                        }
+                        else
+                        {
+                            @line.GetValue("Ecom:Order:OrderLine.Quantity")
+                        }
+
+                    </td>
+                    <td>@line.GetValue("Ecom:Order:OrderLine.TotalPrice")</td>
+                    <td>
+                        @if (line.GetBoolean("Ecom:Order:OrderLine.IsProduct"))
+                        {
+                            <!--Incorderline, decorderline, delorderline-->
+                            <form method="post">
+                                <input type="hidden" name="key" value='@line.GetValue("Ecom:Order:OrderLine.Id")' />
+                                <button class="btn btn-light" type="submit" name="CartCmd" value="IncOrderLine" disabled><span class="fa fa-plus"></span></button>
+                                <button class="btn btn-light" type="submit" name="CartCmd" value='DecOrderline' disabled><span class="fa fa-minus"></span></button>
+                                <button class="btn btn-light" type="submit" name="CartCmd" value="DelOrderLine" disabled><span class="fa fa-trash"></span></button>
+                            </form>
+
+                        }
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>@Translate("Total")</th>
+                <th></th>
+                <th>@GetValue("Ecom:Order.OrderLines.Total.PriceWithVAT")</th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+
+<form name="ordersubmit" id="ordersubmit" method="post" role="form">
+    <div class="row g-0">
+        <!--Billing Address-->
+        <div class="col-xl-6 card">
+            <div class="card-body p-md-5 text-black">
+                <h3 class="mb-4 text-uppercase">Billing Info</h3>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderCustomerFirstName" name="EcomOrderCustomerFirstName" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderCustomerFirstName">First name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderCustomerSurname" name="EcomOrderCustomerSurname" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderCustomerSurname">Last name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="EcomOrderCustomerAddress" name="EcomOrderCustomerAddress" class="form-control form-control-lg" />
+                    <label class="form-label" for="EcomOrderCustomerAddress">Address</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderCustomerZip" name="EcomOrderCustomerZip" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderCustomerZip">Zip</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderCustomerCity" name="EcomOrderCustomerCity" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderCustomerCity">City</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="EcomOrderCustomerCountry" id="EcomOrderCustomerCountry">
+                        @foreach (var country in GetLoop("Countries"))
+                        {
+                            if (country.GetString("Ecom:Country.IsCustomerCountryOrDefault") == "true")
+                            {
+                                <option value='@country.GetValue("Ecom:Country.Code2")' selected>@country.GetValue("Ecom:Country.Name")</option>
+                            }
+                            else
+                            {
+                                <option value='@country.GetValue("Ecom:Country.Code2")'>@country.GetValue("Ecom:Country.Name")</option>
+
+                            }
+                        }
+                    </select>
+                    <label class="form-label" for="EcomOrderCustomerCountry">Country</label>
+                </div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="EcomOrderCustomerEmail" name="EcomOrderCustomerEmail" class="form-control form-control-lg" />
+                    <label class="form-label" for="EcomOrderCustomerEmail">Email</label>
+                </div>
+            </div>
+        </div>
+
+        <!--Delivery Address-->
+        <div class="col-xl-6 card">
+            <div class="card-body p-md-5 text-black">
+                <h3 class="mb-4 text-uppercase">Delivery Info</h3>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderDeliveryFirstName" name="EcomOrderDeliveryFirstName" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderDeliveryFirstName">First name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderDeliverySurname" name="EcomOrderDeliverySurname" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderDeliverySurname">Last name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="EcomOrderDeliveryAddress" name="EcomOrderDeliveryAddress" class="form-control form-control-lg" />
+                    <label class="form-label" for="EcomOrderDeliveryAddress">Address</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderDeliveryZip" name="EcomOrderDeliveryZip" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderDeliveryZip">Zip</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="EcomOrderDeliveryCity" name="EcomOrderDeliveryCity" class="form-control form-control-lg" />
+                            <label class="form-label" for="EcomOrderDeliveryCity">City</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="EcomOrderDeliveryCountry" id="EcomOrderDeliveryCountry">
+                        @foreach (var country in GetLoop("Countries"))
+                        {
+                            if (country.GetString("Ecom:Country.IsDeliveryCountry") == "true")
+                            {
+                                <option value='@country.GetValue("Ecom:Country.Code2")' selected>@country.GetValue("Ecom:Country.Name")</option>
+                            }
+                            else
+                            {
+                                <option value='@country.GetValue("Ecom:Country.Code2")'>@country.GetValue("Ecom:Country.Name")</option>
+
+                            }
+                        }
+                    </select>
+                    <label class="form-label" for="EcomOrderDeliveryCountry">Country</label>
+                </div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="EcomOrderDeliveryEmail" name="EcomOrderDeliveryEmail" class="form-control form-control-lg" />
+                    <label class="form-label" for="EcomOrderDeliveryEmail">Email</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+        <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Next_step", "Next")</button>
+        <button type="submit" name='@GetValue("CartV2.PreviousStepButtonName")' id='@GetValue("CartV2.PreviousStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Go_to_checkout", "Back")</button>
+    </div>
+</form>
