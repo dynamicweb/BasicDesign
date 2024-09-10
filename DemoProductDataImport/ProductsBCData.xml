@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table tableName="EcomProducts">
+
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1896-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1896-S]]></column>
+      <column columnName="ProductName"><![CDATA[ATHEN desk]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[5560]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[4337]]></column>
+      <column columnName="ProductAutoId"><![CDATA[99]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["TABLE"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[TABLE]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1900-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1900-S]]></column>
+      <column columnName="ProductName"><![CDATA[PARIS Guest chair, black]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1071]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[835]]></column>
+      <column columnName="ProductAutoId"><![CDATA[100]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1906-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1906-S]]></column>
+      <column columnName="ProductName"><![CDATA[ATHEN drawer]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[2409]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[1879]]></column>
+      <column columnName="ProductAutoId"><![CDATA[101]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["ASSORTTABLE"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[ASSORTTABLE]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1908-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1908-S]]></column>
+      <column columnName="ProductName"><![CDATA[LONDON turning chair, blue]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1056]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[823]]></column>
+      <column columnName="ProductAutoId"><![CDATA[102]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1920-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1920-S]]></column>
+      <column columnName="ProductName"><![CDATA[ANTWERPEN Conference table]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[3599]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[2808]]></column>
+      <column columnName="ProductAutoId"><![CDATA[103]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["ASSORTTABLE"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[ASSORTTABLE]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1928-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1928-S]]></column>
+      <column columnName="ProductName"><![CDATA[AMSTERDAM Lamp]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[305]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[238]]></column>
+      <column columnName="ProductAutoId"><![CDATA[105]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["MISC"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[MISC]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+  
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1936-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1936-S]]></column>
+      <column columnName="ProductName"><![CDATA[BERLIN Guest chair, yellow]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1071]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[835]]></column>
+      <column columnName="ProductAutoId"><![CDATA[107]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1960-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1960-S]]></column>
+      <column columnName="ProductName"><![CDATA[ROME Guest chair, green]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1071]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[835]]></column>
+      <column columnName="ProductAutoId"><![CDATA[109]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1964-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1964-S]]></column>
+      <column columnName="ProductName"><![CDATA[TOKYO Guest chair, blue]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1071]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[835]]></column>
+      <column columnName="ProductAutoId"><![CDATA[110]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1968-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1968-S]]></column>
+      <column columnName="ProductName"><![CDATA[MEXICO Turn chair, black]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1056]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[823]]></column>
+      <column columnName="ProductAutoId"><![CDATA[112]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1972-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1972-S]]></column>
+      <column columnName="ProductName"><![CDATA[MUNICH Turn chair, yellow]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1056]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[823]]></column>
+      <column columnName="ProductAutoId"><![CDATA[114]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1980-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1980-S]]></column>
+      <column columnName="ProductName"><![CDATA[MOSCOW Turn chair, read]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1056]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[823]]></column>
+      <column columnName="ProductAutoId"><![CDATA[115]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1988-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1988-S]]></column>
+      <column columnName="ProductName"><![CDATA[SEOUL Guest chair, red]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[1071]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[835]]></column>
+      <column columnName="ProductAutoId"><![CDATA[116]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["CHAIR"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+    <item table="EcomProducts">
+      <column columnName="ProductId"><![CDATA[1996-S]]></column>
+      <column columnName="ProductLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="ProductVariantId"><![CDATA[]]></column>
+      <column columnName="ProductDefaultShopId" isNull="true" />
+      <column columnName="ProductNumber"><![CDATA[1996-S]]></column>
+      <column columnName="ProductName"><![CDATA[ATLANTA Whiteboard, basic]]></column>
+      <column columnName="ProductShortDescription" isNull="true" />
+      <column columnName="ProductLongDescription" isNull="true" />
+      <column columnName="ProductImageSmall" isNull="true" />
+      <column columnName="ProductImageMedium" isNull="true" />
+      <column columnName="ProductImageLarge" isNull="true" />
+      <column columnName="ProductLink1" isNull="true" />
+      <column columnName="ProductLink2" isNull="true" />
+      <column columnName="ProductPrice"><![CDATA[7763]]></column>
+      <column columnName="ProductStock"><![CDATA[0]]></column>
+      <column columnName="ProductStockGroupId" isNull="true" />
+      <column columnName="ProductWeight"><![CDATA[0]]></column>
+      <column columnName="ProductVolume"><![CDATA[0]]></column>
+      <column columnName="ProductVatGrpId" isNull="true" />
+      <column columnName="ProductManufacturerId" isNull="true" />
+      <column columnName="ProductActive"><![CDATA[True]]></column>
+      <column columnName="ProductCreated"><![CDATA[22-08-2024 11.08.11.000]]></column>
+      <column columnName="ProductUpdated"><![CDATA[22-08-2024 11.09.10.000]]></column>
+      <column columnName="ProductCustomFieldsXml" isNull="true" />
+      <column columnName="ProductType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceType"><![CDATA[0]]></column>
+      <column columnName="ProductPriceCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantCounter"><![CDATA[0]]></column>
+      <column columnName="ProductVariantProdCounter"><![CDATA[0]]></column>
+      <column columnName="ProductRelatedCounter"><![CDATA[0]]></column>
+      <column columnName="ProductUnitCounter"><![CDATA[0]]></column>
+      <column columnName="ProductDefaultUnitId"><![CDATA[STK]]></column>
+      <column columnName="ProductDefaultVariantComboId" isNull="true" />
+      <column columnName="ProductPriceMatrixUnit"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixVariant"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixMultiplePrices"><![CDATA[0]]></column>
+      <column columnName="ProductPriceMatrixQuantitySpecification" isNull="true" />
+      <column columnName="ProductMetaTitle" isNull="true" />
+      <column columnName="ProductMetaKeywords" isNull="true" />
+      <column columnName="ProductMetaDescription" isNull="true" />
+      <column columnName="ProductMetaUrl" isNull="true" />
+      <column columnName="ProductCategoryFieldValues" isNull="true" />
+      <column columnName="ProductCommentcount" isNull="true" />
+      <column columnName="ProductRating" isNull="true" />
+      <column columnName="ProductCost"><![CDATA[6055]]></column>
+      <column columnName="ProductAutoId"><![CDATA[117]]></column>
+      <column columnName="ProductMetaCanonical" isNull="true" />
+      <column columnName="ProductExcludeFromIndex"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromCustomizedUrls"><![CDATA[False]]></column>
+      <column columnName="ProductExcludeFromAllProducts"><![CDATA[False]]></column>
+      <column columnName="ProductPoints" isNull="true" />
+      <column columnName="ProductHidden"><![CDATA[False]]></column>
+      <column columnName="ProductShowInProductList"><![CDATA[False]]></column>
+      <column columnName="ProductApprovalState"><![CDATA[0]]></column>
+      <column columnName="ProductWorkflowStateId"><![CDATA[0]]></column>
+      <column columnName="ProductEAN"><![CDATA[]]></column>
+      <column columnName="ProductWidth" isNull="true" />
+      <column columnName="ProductHeight" isNull="true" />
+      <column columnName="ProductDepth" isNull="true" />
+      <column columnName="ProductNeverOutOfStock"><![CDATA[False]]></column>
+      <column columnName="ProductPurchaseMinimumQuantity" isNull="true" />
+      <column columnName="ProductPurchaseQuantityStep" isNull="true" />
+      <column columnName="ProductExpectedDelivery" isNull="true" />
+      <column columnName="ProductDiscontinued"><![CDATA[False]]></column>
+      <column columnName="ProductReplacementProductId" isNull="true" />
+      <column columnName="ProductReplacementVariantId" isNull="true" />
+      <column columnName="ProductDiscontinuedAction"><![CDATA[0]]></column>
+      <column columnName="ProductExternalId" isNull="true" />
+      <column columnName="ProductExternalVariantId" isNull="true" />
+      <column columnName="Groups"><![CDATA["MISC"]]></column>
+      <column columnName="PrimaryGroup"><![CDATA[MISC]]></column>
+      <column columnName="GroupSorting"><![CDATA["0"]]></column>
+      <column columnName="VariantGroups" isNull="true" />
+      <column columnName="VariantOptions" isNull="true" />
+      <column columnName="RelatedProducts" isNull="true" />
+    </item>
+  </table>
+</tables>
