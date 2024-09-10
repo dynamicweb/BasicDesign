@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tables>
+  <table tableName="EcomGroups">
+
+    <item table="EcomGroups">
+      <column columnName="GroupId"><![CDATA[TABLE]]></column>
+      <column columnName="GroupLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="GroupName"><![CDATA[Office Tables]]></column>
+      <column columnName="GroupNumber" isNull="true" />
+      <column columnName="GroupSmallImage" isNull="true" />
+      <column columnName="GroupLargeImage" isNull="true" />
+      <column columnName="GroupDescription"><![CDATA[BC IMPORT]]></column>
+      <column columnName="GroupAssortment"><![CDATA[False]]></column>
+      <column columnName="GroupIcon" isNull="true" />
+      <column columnName="GroupNavigationShowInMenu" isNull="true" />
+      <column columnName="GroupNavigationShowInSiteMap" isNull="true" />
+      <column columnName="GroupNavigationClickable" isNull="true" />
+      <column columnName="GroupInheritOrderLineFields" isNull="true" />
+      <column columnName="ProductCategoryId" isNull="true" />
+      <column columnName="GroupRelatedGroups" isNull="true" />
+      <column columnName="GroupRelatedProducts" isNull="true" />
+      <column columnName="GroupManufacturerId" isNull="true" />
+      <column columnName="GroupVatGroupId" isNull="true" />
+      <column columnName="GroupProductType" isNull="true" />
+      <column columnName="GroupStockGroupId" isNull="true" />
+      <column columnName="GroupMetaTitle" isNull="true" />
+      <column columnName="GroupMetaKeywords" isNull="true" />
+      <column columnName="GroupMetaDescription" isNull="true" />
+      <column columnName="GroupMetaUrl" isNull="true" />
+      <column columnName="GroupFilterPagedQueryMode" isNull="true" />
+      <column columnName="GroupMetaPrimaryPage" isNull="true" />
+      <column columnName="GroupMetaCanonical" isNull="true" />
+      <column columnName="GroupAutoId"><![CDATA[58]]></column>
+      <column columnName="GroupInheritCategoryFieldsFromParent"><![CDATA[False]]></column>
+      <column columnName="GroupMetaUrlIgnoreParent"><![CDATA[False]]></column>
+      <column columnName="GroupWorkflowId"><![CDATA[0]]></column>
+      <column columnName="GroupCompletionRules" isNull="true" />
+      <column columnName="GroupCompletionLanguageIds" isNull="true" />
+      <column columnName="GroupProductRelationRuleField1" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue1" isNull="true" />
+      <column columnName="GroupProductRelationRuleField2" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue2" isNull="true" />
+      <column columnName="GroupType" isNull="true" />
+      <column columnName="GroupCompletenessOnAllCategoryFields"><![CDATA[False]]></column>
+      <column columnName="Shops"><![CDATA["SHOP1"]]></column>
+      <column columnName="ShopSorting"><![CDATA["0"]]></column>
+      <column columnName="ParentGroupsSorting" isNull="true" />
+      <column columnName="ParentGroups" isNull="true" />
+    </item>
+    <item table="EcomGroups">
+      <column columnName="GroupId"><![CDATA[CHAIR]]></column>
+      <column columnName="GroupLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="GroupName"><![CDATA[Office Chairs]]></column>
+      <column columnName="GroupNumber" isNull="true" />
+      <column columnName="GroupSmallImage" isNull="true" />
+      <column columnName="GroupLargeImage" isNull="true" />
+      <column columnName="GroupDescription"><![CDATA[BC IMPORT]]></column>
+      <column columnName="GroupAssortment"><![CDATA[False]]></column>
+      <column columnName="GroupIcon" isNull="true" />
+      <column columnName="GroupNavigationShowInMenu" isNull="true" />
+      <column columnName="GroupNavigationShowInSiteMap" isNull="true" />
+      <column columnName="GroupNavigationClickable" isNull="true" />
+      <column columnName="GroupInheritOrderLineFields" isNull="true" />
+      <column columnName="ProductCategoryId" isNull="true" />
+      <column columnName="GroupRelatedGroups" isNull="true" />
+      <column columnName="GroupRelatedProducts" isNull="true" />
+      <column columnName="GroupManufacturerId" isNull="true" />
+      <column columnName="GroupVatGroupId" isNull="true" />
+      <column columnName="GroupProductType" isNull="true" />
+      <column columnName="GroupStockGroupId" isNull="true" />
+      <column columnName="GroupMetaTitle" isNull="true" />
+      <column columnName="GroupMetaKeywords" isNull="true" />
+      <column columnName="GroupMetaDescription" isNull="true" />
+      <column columnName="GroupMetaUrl" isNull="true" />
+      <column columnName="GroupFilterPagedQueryMode" isNull="true" />
+      <column columnName="GroupMetaPrimaryPage" isNull="true" />
+      <column columnName="GroupMetaCanonical" isNull="true" />
+      <column columnName="GroupAutoId"><![CDATA[59]]></column>
+      <column columnName="GroupInheritCategoryFieldsFromParent"><![CDATA[False]]></column>
+      <column columnName="GroupMetaUrlIgnoreParent"><![CDATA[False]]></column>
+      <column columnName="GroupWorkflowId"><![CDATA[0]]></column>
+      <column columnName="GroupCompletionRules" isNull="true" />
+      <column columnName="GroupCompletionLanguageIds" isNull="true" />
+      <column columnName="GroupProductRelationRuleField1" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue1" isNull="true" />
+      <column columnName="GroupProductRelationRuleField2" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue2" isNull="true" />
+      <column columnName="GroupType" isNull="true" />
+      <column columnName="GroupCompletenessOnAllCategoryFields"><![CDATA[False]]></column>
+      <column columnName="Shops"><![CDATA["SHOP1"]]></column>
+      <column columnName="ShopSorting"><![CDATA["0"]]></column>
+      <column columnName="ParentGroupsSorting" isNull="true" />
+      <column columnName="ParentGroups" isNull="true" />
+    </item>
+    <item table="EcomGroups">
+      <column columnName="GroupId"><![CDATA[ASSORTTABLE]]></column>
+      <column columnName="GroupLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="GroupName"><![CDATA[Assorted Tables]]></column>
+      <column columnName="GroupNumber" isNull="true" />
+      <column columnName="GroupSmallImage" isNull="true" />
+      <column columnName="GroupLargeImage" isNull="true" />
+      <column columnName="GroupDescription"><![CDATA[BC IMPORT]]></column>
+      <column columnName="GroupAssortment"><![CDATA[False]]></column>
+      <column columnName="GroupIcon" isNull="true" />
+      <column columnName="GroupNavigationShowInMenu" isNull="true" />
+      <column columnName="GroupNavigationShowInSiteMap" isNull="true" />
+      <column columnName="GroupNavigationClickable" isNull="true" />
+      <column columnName="GroupInheritOrderLineFields" isNull="true" />
+      <column columnName="ProductCategoryId" isNull="true" />
+      <column columnName="GroupRelatedGroups" isNull="true" />
+      <column columnName="GroupRelatedProducts" isNull="true" />
+      <column columnName="GroupManufacturerId" isNull="true" />
+      <column columnName="GroupVatGroupId" isNull="true" />
+      <column columnName="GroupProductType" isNull="true" />
+      <column columnName="GroupStockGroupId" isNull="true" />
+      <column columnName="GroupMetaTitle" isNull="true" />
+      <column columnName="GroupMetaKeywords" isNull="true" />
+      <column columnName="GroupMetaDescription" isNull="true" />
+      <column columnName="GroupMetaUrl" isNull="true" />
+      <column columnName="GroupFilterPagedQueryMode" isNull="true" />
+      <column columnName="GroupMetaPrimaryPage" isNull="true" />
+      <column columnName="GroupMetaCanonical" isNull="true" />
+      <column columnName="GroupAutoId"><![CDATA[61]]></column>
+      <column columnName="GroupInheritCategoryFieldsFromParent"><![CDATA[False]]></column>
+      <column columnName="GroupMetaUrlIgnoreParent"><![CDATA[False]]></column>
+      <column columnName="GroupWorkflowId"><![CDATA[0]]></column>
+      <column columnName="GroupCompletionRules" isNull="true" />
+      <column columnName="GroupCompletionLanguageIds" isNull="true" />
+      <column columnName="GroupProductRelationRuleField1" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue1" isNull="true" />
+      <column columnName="GroupProductRelationRuleField2" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue2" isNull="true" />
+      <column columnName="GroupType" isNull="true" />
+      <column columnName="GroupCompletenessOnAllCategoryFields"><![CDATA[False]]></column>
+      <column columnName="Shops"><![CDATA["SHOP1"]]></column>
+      <column columnName="ShopSorting"><![CDATA["0"]]></column>
+      <column columnName="ParentGroupsSorting" isNull="true" />
+      <column columnName="ParentGroups" isNull="true" />
+    </item>
+    <item table="EcomGroups">
+      <column columnName="GroupId"><![CDATA[MISC]]></column>
+      <column columnName="GroupLanguageId"><![CDATA[LANG1]]></column>
+      <column columnName="GroupName"><![CDATA[Miscellaneous]]></column>
+      <column columnName="GroupNumber" isNull="true" />
+      <column columnName="GroupSmallImage" isNull="true" />
+      <column columnName="GroupLargeImage" isNull="true" />
+      <column columnName="GroupDescription"><![CDATA[BC IMPORT]]></column>
+      <column columnName="GroupAssortment"><![CDATA[False]]></column>
+      <column columnName="GroupIcon" isNull="true" />
+      <column columnName="GroupNavigationShowInMenu" isNull="true" />
+      <column columnName="GroupNavigationShowInSiteMap" isNull="true" />
+      <column columnName="GroupNavigationClickable" isNull="true" />
+      <column columnName="GroupInheritOrderLineFields" isNull="true" />
+      <column columnName="ProductCategoryId" isNull="true" />
+      <column columnName="GroupRelatedGroups" isNull="true" />
+      <column columnName="GroupRelatedProducts" isNull="true" />
+      <column columnName="GroupManufacturerId" isNull="true" />
+      <column columnName="GroupVatGroupId" isNull="true" />
+      <column columnName="GroupProductType" isNull="true" />
+      <column columnName="GroupStockGroupId" isNull="true" />
+      <column columnName="GroupMetaTitle" isNull="true" />
+      <column columnName="GroupMetaKeywords" isNull="true" />
+      <column columnName="GroupMetaDescription" isNull="true" />
+      <column columnName="GroupMetaUrl" isNull="true" />
+      <column columnName="GroupFilterPagedQueryMode" isNull="true" />
+      <column columnName="GroupMetaPrimaryPage" isNull="true" />
+      <column columnName="GroupMetaCanonical" isNull="true" />
+      <column columnName="GroupAutoId"><![CDATA[62]]></column>
+      <column columnName="GroupInheritCategoryFieldsFromParent"><![CDATA[False]]></column>
+      <column columnName="GroupMetaUrlIgnoreParent"><![CDATA[False]]></column>
+      <column columnName="GroupWorkflowId"><![CDATA[0]]></column>
+      <column columnName="GroupCompletionRules" isNull="true" />
+      <column columnName="GroupCompletionLanguageIds" isNull="true" />
+      <column columnName="GroupProductRelationRuleField1" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue1" isNull="true" />
+      <column columnName="GroupProductRelationRuleField2" isNull="true" />
+      <column columnName="GroupProductRelationRuleValue2" isNull="true" />
+      <column columnName="GroupType" isNull="true" />
+      <column columnName="GroupCompletenessOnAllCategoryFields"><![CDATA[False]]></column>
+      <column columnName="Shops"><![CDATA["SHOP1"]]></column>
+      <column columnName="ShopSorting"><![CDATA["0"]]></column>
+      <column columnName="ParentGroupsSorting" isNull="true" />
+      <column columnName="ParentGroups" isNull="true" />
+    </item>
+  </table>
+</tables>
