@@ -10,8 +10,7 @@
         <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
             <div class="card">
                 <!--Product Image-->
-                <img src="@product.DefaultImage.Value"
-                     class="card-img-top" alt="@product.Name" />
+                <a href="?ProductID=@product.Id"><img src="@product.DefaultImage.Value" class="card-img-top" alt="@product.Name" /></a>
                 <div class="card-body">
                     <!--If there's a discount, show price before discount-->
                     @if (product.Price.Price != product.PriceBeforeDiscount.Price)
