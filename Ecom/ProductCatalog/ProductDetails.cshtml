@@ -74,8 +74,7 @@
                             {
                                 <span class="ms-2 text-danger">@Model.StockStatus</span>
                             }
-                        } 
-
+                        }
 
                     </div>
                     <!--Price-->
@@ -89,17 +88,29 @@
 
                     <hr />
 
-                    <!--Right now hardcoded to standard fields, but we should consider showing category fields here-->
+                    <!--Highlighted field values-->
                     <div class="row">
+                        <!--Standard fields-->
                         <dt class="col-3">EAN</dt>
                         <dd class="col-9">@Model.EAN</dd>
 
                         <dt class="col-3">Product Number</dt>
                         <dd class="col-9">@Model.Number</dd>
-
-                        <dt class="col-3">Manufacturer</dt>
-                        <dd class="col-9">@Model.Manufacturer.Name</dd>
-
+                        <!--Category Brand_information-->
+                        @foreach (var category in @Model.ProductCategories)
+                        {
+                            if (category.Key == "brand_information")
+                            {
+                                foreach (var field in @category.Value.Fields)
+                                {
+                                    if (field.Key == "Brand_name")
+                                    {
+                                        <dt class="col-3">Brand</dt>
+                                        <dd class="col-9">@field.Value</dd>
+                                    }
+                                }
+                            }
+                        }
                     </div>
 
                     <hr />
@@ -143,7 +154,7 @@
             {
                 if (relationgroup.Name == "Related Products")
                 {
-                    <div class="col-sm-4">
+                    <div class="col-lg-4 col-sm-12">
                         <div class="px-0 border rounded-2 shadow-0">
                             <div class="card">
                                 <div class="card-body">
@@ -173,5 +184,37 @@
             }
 
         </div>
+        <!--Technical downloads-->
+        @if (Model.AssetCategories.Count > 0)
+        {
+            foreach (var assetcategory in Model.AssetCategories)
+            {
+                if (assetcategory.SystemName == "technical_downloads")
+                {
+                    <div class="row gx-4">
+                        <div class="col-lg mb-4">
+                            <div class="border rounded-2 px-3 py-2 bg-white">
+                                <h4 class="title text-dark">Downloads</h4>
+                                <table class="table table-striped table-responsive">
+                                    <tbody>
+                                        @foreach (var asset in assetcategory.Assets)
+                                        {
+                                            string[] assetstring = asset.Value.Split("/");
+                                            string filename = @assetstring.LastOrDefault();
+                                            <tr>
+                                                <td><i class="fa-regular fa-file"></i></td>
+                                                <td>@filename</td>
+                                                <td><a href="@asset.Value" download>Download</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
     </div>
+
 </section>

@@ -2,15 +2,17 @@
 @using Dynamicweb.Ecommerce.ProductCatalog
 @inherits ViewModelTemplate<ProductListViewModel>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 card-group">
 
     @foreach (var product in Model.Products)
     {
 
         <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card">
+            <div class="card h-100">
                 <!--Product Image-->
-                <a href="?ProductID=@product.Id"><img src="@product.DefaultImage.Value" class="card-img-top" alt="@product.Name" /></a>
+
+                <a href="?ProductID=@product.Id"><img src="/Admin/Public/GetImage.ashx?width=1280&Image=@product.DefaultImage.Value&format=webp" class="card-img-top" alt="@product.Name" style="height:30vh;object-fit:cover" /></a>
+                
                 <div class="card-body">
                     <!--If there's a discount, show price before discount-->
                     @if (product.Price.Price != product.PriceBeforeDiscount.Price)
