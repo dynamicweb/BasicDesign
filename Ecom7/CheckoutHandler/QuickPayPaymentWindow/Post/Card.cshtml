@@ -1,0 +1,125 @@
+﻿@using System.Collections.Generic
+@using Dynamicweb.Rendering
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+
+<div id="card-container" style="display: flex; flex-direction: column; gap: 10px">	
+	<label for="brandingId">Branding</label>
+	<input type="number" id="brandingId" value="@GetString("QuickPayPaymentWindow.branding_id")">
+
+	<label for="language">Language</label>
+	<select name="language" id="language"></select>
+	
+	<label for="paymentMethods">Payment methods</label>
+	<select name="paymentMethods" id="paymentMethods" multiple></select>
+
+	<label for="googleAnalyticsTracking">Google Analytics Tracking</label>
+	<input type="text" id="googleAnalyticsTracking" value="@GetString("QuickPayPaymentWindow.google_analytics_tracking_id")">
+
+	<label for="googleAnalyticsClient">Google Analytics Client</label>
+	<input type="text" id="googleAnalyticsClient" value="@GetString("QuickPayPaymentWindow.google_analytics_client_id")">
+	
+	<button id="paymentButton">Start payment</button>
+</div>
+
+<span style="color:red" id="errorsContainer"></span>
+
+<script type="module">
+
+	const baseUrl = '/Default.aspx?ID=@GetGlobalValue("Global:Page.ID")&CheckoutHandlerOrderID=@GetString("Ecom:Order.ID")&redirect=false';	
+	const button = document.getElementById("paymentButton");
+	button.addEventListener('click', function() {
+		const paymentMethods = document.getElementById('paymentMethods');
+		const paymentMethodSelectedValues = [...paymentMethods.selectedOptions].map((option) => option.value).join(',');
+		
+		var configuration = {
+			agreementId: "@GetString("QuickPayPaymentWindow.agreement_id")",
+			brandingId: document.getElementById("brandingId").value,
+			languageCode: document.getElementById("language").value,
+			paymentMethods: paymentMethodSelectedValues,
+			googleAnalyticsTrackingId: document.getElementById("googleAnalyticsTracking").value,
+			googleAnalyticsClientId: document.getElementById("googleAnalyticsClient").value,
+			receiptUrl: "@GetString("QuickPayPaymentWindow.receipturl")",
+			cancelUrl: "@GetString("QuickPayPaymentWindow.cancelurl")",
+			callbackUrl: "@GetString("QuickPayPaymentWindow.callbackurl")"
+		};
+		
+		processOperation(baseUrl + '&QuickPayState=CreateCard', configuration);
+	});
+	
+	fillPaymentMethods();
+	fillLanguages();
+	
+    async function processOperation(url, data) {
+        const configuration = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+		
+        const response = await fetch(url, configuration);
+        if (!response.ok) {
+            showError(`Something went wrong. Response status: ${response.status}`);
+            return;
+        }
+
+        const json = await response.json();		
+		if (json.errorMessage) {
+            showError(json.errorMessage);
+			return;
+		}		
+		
+        if (json.url) {
+            document.location = json.url;
+            return;
+        }
+        
+		showError();        
+    }
+
+    function showError(message) {
+        const errorsContainer = document.getElementById("errorsContainer");
+        errorsContainer.textContent = message && message.length > 0 ? message : "Unhandled error is occured";
+    }
+	
+	function fillPaymentMethods() {
+		const selectedOptions = '@GetString("QuickPayPaymentWindow.payment_methods")'.split(',');
+		const availableOptions = getOptionsData('@GetString("QuickPayPaymentWindow.availablePaymentMethods")');
+		
+		const paymentMethodsSelect = document.getElementById('paymentMethods');
+		for (const optionData of availableOptions) {
+			const option = new Option(optionData.label, optionData.value);
+			if (selectedOptions.includes(option.value)) {
+				option.selected = 'selected';
+			}
+			paymentMethodsSelect.add(option);
+		}		
+	}
+	
+	function fillLanguages() {
+		const selectedLanguage = '@GetString("QuickPayPaymentWindow.language")';
+		const availableOptions = getOptionsData('@GetString("QuickPayPaymentWindow.availableLanguages")');
+		
+		const languagesSelect = document.getElementById('language');
+		for (const optionData of availableOptions) {
+			const option = new Option(optionData.label, optionData.value);
+			if (option.value == selectedLanguage) {
+				option.selected = 'selected';
+			}
+			languagesSelect.add(option);
+		}		
+	}
+	
+	function getOptionsData(data) {
+		const optionsData = data.split(',').map((option) => option.split('|'));
+		return optionsData.map((option) => {
+			return {
+				value: option[0],
+				label: option[1] ? option[1] : option[0]	
+			}
+		});		
+	}
+	
+</script>

@@ -1,0 +1,21 @@
+@using System.Collections.Generic
+@using Dynamicweb.Rendering
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<body>
+	<!-- Payment Information -->
+	<!-- See other Stripe related tags which you could use here: Stripe.publishablekey, Stripe.language, Stripe.name, Stripe.image, Stripe.description. Stripe.currency, Stripe.amount, Stripe.email, Stripe.cardName -->
+  
+	<h2>@Translate("paymentinformation", "Payment Information")</h2>
+	<p>
+		<label>@Translate("orderid", "Order Id"): <b>@GetString("Ecom:Order.ID")</b></label><br/>
+		<label>@Translate("amount", "Amount"): <b>@GetString("Ecom:Order.Price.PriceWithVATFormatted")</b></label><br/>
+		<label>@Translate("email", "Email"): <b>@GetString("Stripe.email")</b></label><br/>
+	</p>
+
+	<form name="purchaseForm" id="purchaseForm" action="/Default.aspx?ID=@GetGlobalValue("Global:Page.ID")&CheckoutHandlerOrderID=@GetString("Ecom:Order.ID")&Action=CreateSession" method="POST">
+		<button type="submit" id="checkout-button">Checkout</button>
+	</form>
+</body>

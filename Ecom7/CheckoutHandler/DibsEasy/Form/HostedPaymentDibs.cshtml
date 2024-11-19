@@ -1,0 +1,6 @@
+﻿<h2>@Translate("Payment Information", "Payment Information")</h2>
+<p>
+    <label>@Translate("Order Id", "Order Id"): <b>@GetValue("Ecom:Order.ID")</b></label> <br />
+    <label>@Translate("Amount", "Amount"): <b>@GetValue("Ecom:Order.Price.PriceWithVATFormatted")</b></label> <br />
+</p>
+<a href="@GetValue("DibsEasy.hostedPaymentPageUrl")"><div id="dibs-complete-checkout">Redirect to payment gateway</div></a>

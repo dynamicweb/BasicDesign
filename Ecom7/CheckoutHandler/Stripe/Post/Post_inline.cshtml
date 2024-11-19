@@ -1,0 +1,61 @@
+@using System.Collections.Generic
+@using Dynamicweb.Rendering
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+
+<!-- Use this template if 'Render inline form' settings is selected. -->
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="module">
+	initialize();
+
+	// Create a Checkout Session
+	async function initialize() {
+		const baseUrl = '/Default.aspx?ID=@GetGlobalValue("Global:Page.ID")&CheckoutHandlerOrderID=@GetString("Ecom:Order.ID")&redirect=false';
+		
+		const fetchClientSecret = async () => {
+			const response = await fetch(baseUrl + '&Action=CreateSession', {
+				method: "POST",
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				}
+			});
+							
+			//error handling
+			const errorMessage = "The error occured during session creation";
+			if (!response.ok) {
+				showError(`${errorMessage}: ${response.status}`);
+				return;
+			}
+			
+			const responseData = await response.json();
+			if (responseData.errorMessage) {
+				showError(`${errorMessage}: ${responseData.errorMessage}`);
+				return;
+			}
+					
+			return responseData.clientSecret;			
+		};
+		
+		const stripe = Stripe('@GetString("Stripe.publishablekey")', { locale: '@GetString("Stripe.language")' });	
+		const checkout = await stripe.initEmbeddedCheckout({
+			fetchClientSecret
+		});
+
+		// Mount Checkout
+		checkout.mount('#checkout');
+	}	
+	
+    function showError(message) {
+        const errorsContainer = document.getElementById("errorsContainer");
+        errorsContainer.textContent = message && message.length > 0 ? message : "Unhandled error is occured";
+    }
+</script>
+
+<!-- See Stripe related tags which you could use here: Stripe.publishablekey, Stripe.language, Stripe.name, Stripe.image, Stripe.description. Stripe.currency, Stripe.amount, Stripe.email, Stripe.cardName -->
+<!-- Display a payment form -->
+
+<div id="checkout">
+	<!-- Checkout will insert the payment form here -->
+</div>
+<span style="color:red" id="errorsContainer"></span>

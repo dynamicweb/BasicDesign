@@ -1,0 +1,44 @@
+﻿<!-- Payment Information -->
+<h2>Payment Information</h2>
+<p>
+    <label>Order ID: <b>@GetString("Ecom:Order.ID")</b></label> <br />
+    <label>Amount: <b>@GetString("Ecom:Order.Price.PriceWithVATFormatted")</b></label> <br />
+</p>
+
+<div id="dibs-complete-checkout"> </div>
+
+<script src="@GetString("DibsEasy.checkoutSrc")"></script>
+
+
+
+<script type="text/javascript" script-src="self">
+    var key = "@GetString("DibsEasy.checkoutKey")";
+    var paymentId = "@GetString("DibsEasy.paymentId")";
+    var language = "@GetString("DibsEasy.language")";
+    if (key && paymentId) {
+        var checkoutOptions = {
+            checkoutKey: key, //[Required] Test or Live GUID with dashes
+            paymentId: paymentId, //[required] GUID without dashes
+            containerId: "dibs-complete-checkout",//[optional] defaultValue: dibs-checkout-content
+            language: language || "en-GB" //[optional] defaultValue: en-GB
+        };
+        var checkout = new Dibs.Checkout(checkoutOptions);
+
+        //this is the event that the merchant should listen to redirect to the “payment-is-ok” page
+        checkout.on('payment-completed', function (response) {
+            /*
+            Response:
+            paymentId: string (GUID without dashes)
+            */
+            var url = "@GetString("DibsEasy.invoiceApproveUrl")"
+            var invoicePaymentId = response.paymentId;
+            if (url && invoicePaymentId) {
+                window.location = url + "&paymentId=" + invoicePaymentId;
+            }
+        });
+    }
+</script>
+
+
+
+<div>@TemplateTags()</div>

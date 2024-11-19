@@ -1,0 +1,20 @@
+﻿<form action="https://payment.quickpay.net" method="post">
+    <input type="hidden" name="version" value="v10">
+    <input type="hidden" name="agreement_id" value="@GetString("QuickPayPaymentWindow.agreement_id")" />
+    <input type="hidden" name="merchant_id" value="@GetString("QuickPayPaymentWindow.merchant_id")" />
+    <input type="hidden" name="language" value="@GetString("QuickPayPaymentWindow.language")" />
+    <input type="hidden" name="order_id" value="@GetString("QuickPayPaymentWindow.order_id")" />
+    <input type="hidden" name="amount" value="@GetString("QuickPayPaymentWindow.amount")" />
+    <input type="hidden" name="currency" value="@GetString("QuickPayPaymentWindow.currency")" />
+    <input type="hidden" name="continueurl" value="@GetString("QuickPayPaymentWindow.continueurl")" />
+    <input type="hidden" name="cancelurl" value="@GetString("QuickPayPaymentWindow.cancelurl")" />
+    <input type="hidden" name="callbackurl" value="@GetString("QuickPayPaymentWindow.callbackurl")" />
+    <input type="hidden" name="autocapture" value="@GetString("QuickPayPaymentWindow.autocapture")" />
+    <input type="hidden" name="autofee" value="@GetString("QuickPayPaymentWindow.autofee")" />
+    <input type="hidden" name="payment_methods" value="@GetString("QuickPayPaymentWindow.payment_methods")" />
+    <input type="hidden" name="branding_id" value="@GetString("QuickPayPaymentWindow.branding_id")" />
+    <input type="hidden" name="google_analytics_tracking_id" value="@GetString("QuickPayPaymentWindow.google_analytics_tracking_id")" />
+    <input type="hidden" name="google_analytics_client_id" value="@GetString("QuickPayPaymentWindow.google_analytics_client_id")" />
+    <input type="hidden" name="checksum" value="@GetString("QuickPayPaymentWindow.checksum")" />
+    <input type="submit" value="Start payment" />
+</form>
