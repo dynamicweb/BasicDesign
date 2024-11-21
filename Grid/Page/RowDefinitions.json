@@ -16,5 +16,14 @@
     "ColumnCount": 2,
     "ItemType": "",
     "Thumbnail": ""
+  },
+  {
+    "Id": "3Columns",
+    "Name": "3 Columns",
+    "Description": "1 row with 3 columns",
+    "Template": "3Columns.cshtml",
+    "ColumnCount": 3,
+    "ItemType": "",
+    "Thumbnail": ""
   }
 ]
