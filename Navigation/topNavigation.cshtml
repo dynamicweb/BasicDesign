@@ -7,6 +7,7 @@
 @{
     var pageService = new Dynamicweb.Content.PageService();
     var cartPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "cart");
+    var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
 }
 
 <nav class="navbar navbar-expand-lg">
@@ -41,7 +42,14 @@
             </ul>
         </div>
         <div class="d-flex align-items-center">
-            <!-- Icon -->
+            <!-- Profile -->
+            @if (profilePage != null)
+            {
+                <a class="text-reset me-3" href="/Default.aspx?ID=@profilePage.ID">
+                    <i class="fas fa-user"></i>
+                </a>
+            }
+            <!-- Cart -->
             @if (cartPage != null)
             {
                 <a class="text-reset me-3" href="/Default.aspx?ID=@cartPage.ID">
