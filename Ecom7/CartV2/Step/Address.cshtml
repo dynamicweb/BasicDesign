@@ -91,33 +91,33 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
-                            <input type="text" id="EcomOrderCustomerFirstName" name="EcomOrderCustomerFirstName" class="form-control form-control-lg" />
+                            <input type="text" id="EcomOrderCustomerFirstName" name="EcomOrderCustomerFirstName" class="form-control form-control-lg" value='@(Pageview.User?.FirstName ?? "")' />
                             <label class="form-label" for="EcomOrderCustomerFirstName">First name</label>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
-                            <input type="text" id="EcomOrderCustomerSurname" name="EcomOrderCustomerSurname" class="form-control form-control-lg" />
+                            <input type="text" id="EcomOrderCustomerSurname" name="EcomOrderCustomerSurname" class="form-control form-control-lg" value='@(Pageview.User?.LastName ?? "")' />
                             <label class="form-label" for="EcomOrderCustomerSurname">Last name</label>
                         </div>
                     </div>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" id="EcomOrderCustomerAddress" name="EcomOrderCustomerAddress" class="form-control form-control-lg" />
+                    <input type="text" id="EcomOrderCustomerAddress" name="EcomOrderCustomerAddress" class="form-control form-control-lg" value='@(Pageview.User?.Address ?? "")' />
                     <label class="form-label" for="EcomOrderCustomerAddress">Address</label>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
-                            <input type="text" id="EcomOrderCustomerZip" name="EcomOrderCustomerZip" class="form-control form-control-lg" />
+                            <input type="text" id="EcomOrderCustomerZip" name="EcomOrderCustomerZip" class="form-control form-control-lg" value='@(Pageview.User?.Zip ?? "")' />
                             <label class="form-label" for="EcomOrderCustomerZip">Zip</label>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
-                            <input type="text" id="EcomOrderCustomerCity" name="EcomOrderCustomerCity" class="form-control form-control-lg" />
+                            <input type="text" id="EcomOrderCustomerCity" name="EcomOrderCustomerCity" class="form-control form-control-lg" value='@(Pageview.User?.City ?? "")' />
                             <label class="form-label" for="EcomOrderCustomerCity">City</label>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                     <label class="form-label" for="EcomOrderCustomerCountry">Country</label>
                 </div>
                 <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="EcomOrderCustomerEmail" name="EcomOrderCustomerEmail" class="form-control form-control-lg" />
+                    <input type="email" id="EcomOrderCustomerEmail" name="EcomOrderCustomerEmail" class="form-control form-control-lg" value='@(Pageview.User?.Email ?? "")' />
                     <label class="form-label" for="EcomOrderCustomerEmail">Email</label>
                 </div>
             </div>
