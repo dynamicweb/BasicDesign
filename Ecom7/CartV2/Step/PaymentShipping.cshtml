@@ -81,7 +81,29 @@
     </table>
 </div>
 
+
 <form name="ordersubmit" id="ordersubmit" method="post" role="form">
+
+    <!--Vouchers & Gift Cards-->
+    <div class="row g-0">
+        <div class="col-xl-12 card">
+            <div class="card-body p-md-5 text-black">
+                <h3 class="mb-4 text-uppercase">Vouchers & Gift Cards</h3>
+                <div class="mb-3">
+                    <label for="EcomOrderCustomerVoucher" class="form-label">Voucher code</label>
+                    <input class="form-control" type="text" name="EcomOrderCustomerVoucher" id="EcomOrderCustomerVoucher" value='@GetString("Ecom:Order.Customer.VoucherCode")' />
+                </div>
+                <div class="mb-3">
+                    <label for="EcomOrderGiftCardCode" class="form-label">Gift card code</label>
+                    <input class="form-control" type="text" name="EcomOrderGiftCardCode" id="EcomOrderGiftCardCode" value="" />
+                </div>
+                <div class="card-body">
+                    <button type="submit" name='@GetValue("CartV2.CurrentStepButtonName")' id='@GetValue("CartV2.CurrentStepButtonName")' class="submitter btn btn-primary float-end">Apply</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+
     <div class="row g-0">
         <!--Payment Methods-->
         <div class="col-xl-6 card">
@@ -111,9 +133,8 @@
         </div>
     </div>
 
-
     <div class="col-md-12">
         <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Complete", "Complete")</button>
-        <button type="submit" name='@GetValue("CartV2.PreviousStepButtonName")' id='@GetValue("CartV2.PreviousStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Go_to_checkout", "Back")</button>
+        <button type="submit" name='@GetValue("CartV2.PreviousStepButtonName")' id='@GetValue("CartV2.PreviousStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Back", "Back")</button>
     </div>
 </form>
