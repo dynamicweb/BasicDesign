@@ -92,6 +92,38 @@
 
     </table>
 
+    <!--Bought GiftCards-->
+    @if (@GetString("Ecom:Order.HasGiftCards") == "true")
+    {
+        <h3>Gift cards bought</h3>
+        <div class="wrapper d-flex justify-content-center align-items-center">
+            @foreach (var giftcard in GetLoop("GiftCards"))
+            {
+
+
+                <div class="card">
+
+                    <div class="content">
+                        <div class="text-center text-uppercase off px-5 mb-3 mt-4">
+                            <span>Gift Card</span>
+                            <h1 class="mt-0">@giftcard.GetString("Ecom:Order.GiftCard.Amount")</h1>
+                        </div>
+                        <div class="text-center">
+                            <span class="plus">USE CODE</span>
+                        </div>
+                        <div class="px-5 mb-3">
+                            <div class="code text-center mt-4">
+                                <span><b>@giftcard.GetString("Ecom:Order.GiftCard.Code")</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <hr />
+    }
+
+
     <div class="row g-0">
         <div class="col-md-6 mb-4">
             <h4>Shipped To</h4>
