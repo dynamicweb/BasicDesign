@@ -1,0 +1,87 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@{
+    var pageService = new Dynamicweb.Content.PageService();
+    var loginPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
+}
+
+<div class="">
+
+    <!-- Register account-->
+    @if (Pageview.User == null)
+    {
+
+        @GetValue("UserManagement:User.FormStart")
+        <!-- Username -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-username" name='@GetValue("UserManagement:User.UserName.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Username</label>
+        </div>
+
+        <!-- First name -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-firstname" name='@GetValue("UserManagement:User.FirstName.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">First name</label>
+        </div>
+
+        <!-- Last name -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='@GetValue("UserManagement:User.LastName.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Last name</label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-outline mb-4">
+            <input type="email" id="create-email" name='@GetValue("UserManagement:User.Email.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Email</label>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='@GetValue("UserManagement:User.Phone.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Phone</label>
+        </div>
+
+        <!-- Address -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='@GetValue("UserManagement:User.Address.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Address</label>
+        </div>
+
+        <!-- Zip code -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='@GetValue("UserManagement:User.Zip.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">Zip</label>
+        </div>
+
+        <!-- City -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='@GetValue("UserManagement:User.City.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example1">City</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="create-password" name='@GetValue("UserManagement:User.NewPassword.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example2">Password</label>
+        </div>
+
+        <!-- Password confirm -->
+        <div class="form-outline mb-4">
+            <input type="password" id="create-password-confirm" name='@GetValue("UserManagement:User.NewPasswordConfirm.InputName")' class="form-control" />
+            <label class="form-label" for="form2Example2">Confirm password</label>
+        </div>
+        
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4 float-end">Create user</button>
+        @GetValue("UserManagement:User.FormEnd")
+
+        <p>Already have an account? <a href="/Default.aspx?ID=@loginPage.ID">Log in</a></p>
+
+
+    }
+    else
+    {
+        <p>You're already registered and logged in - <a href="/Default.aspx?ID=@loginPage.ID">Go to profile</a></p>
+    }
+</div>
