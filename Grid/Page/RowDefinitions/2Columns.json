@@ -1,0 +1,18 @@
+{
+    "Id": "2Columns",
+    "Name": "2 columns",
+    "Description": "1 row with 2 columns",
+    "Template": "ColumnTemplate.cshtml",
+    "ColumnCount": 2,
+    "ColumnWidths": [
+      6,
+      6
+    ],
+    "ItemType": "",
+    "DefinitionPath": "",
+    "EnableTopSpacing": false,
+    "EnableBottomSpacing": false,
+    "EnableContainerWidth": false,
+    "EnableDesktopLayout": false,
+    "EnableBackgroundImage": false
+  }

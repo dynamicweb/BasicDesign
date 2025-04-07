@@ -1,0 +1,17 @@
+{
+    "Id": "1Column",
+    "Name": "1 column",
+    "Description": "1 row with 1 column",
+    "Template": "ColumnTemplate.cshtml",
+    "ColumnCount": 1,
+    "ColumnWidths": [
+      12
+    ],
+    "ItemType": "",
+    "DefinitionPath": "",
+    "EnableTopSpacing": false,
+    "EnableBottomSpacing": false,
+    "EnableContainerWidth": false,
+    "EnableDesktopLayout": false,
+    "EnableBackgroundImage": false
+  }

@@ -1,0 +1,18 @@
+{
+    "Id": "2Columns3-9",
+    "Name": "2 columns (3/9)",
+    "Description": "1 row with 2 columns (3/9)",
+    "Template": "ColumnTemplate.cshtml",
+    "ColumnCount": 2,
+    "ColumnWidths": [
+      3,
+      9
+    ],
+    "ItemType": "",
+    "DefinitionPath": "",
+    "EnableTopSpacing": false,
+    "EnableBottomSpacing": false,
+    "EnableContainerWidth": false,
+    "EnableDesktopLayout": false,
+    "EnableBackgroundImage": false
+  }

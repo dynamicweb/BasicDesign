@@ -1,0 +1,19 @@
+{
+    "Id": "3Columns",
+    "Name": "3 columns",
+    "Description": "3 columns row",
+    "Template": "ColumnTemplate.cshtml",
+    "ColumnCount": 3,
+    "ColumnWidths": [
+      4,
+      4,
+      4
+    ],
+    "ItemType": "",
+    "DefinitionPath": "",
+    "EnableTopSpacing": false,
+    "EnableBottomSpacing": false,
+    "EnableContainerWidth": false,
+    "EnableDesktopLayout": false,
+    "EnableBackgroundImage": false
+  }
