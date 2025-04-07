@@ -1,0 +1,12 @@
+@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+
+<div class="container">
+    <div class="row">
+		@foreach(var column in Model.Columns)
+		{
+			<div class="col-@column.ColumnWidth">
+				@column.Output()
+			</div>
+		}
+    </div>
+</div>
