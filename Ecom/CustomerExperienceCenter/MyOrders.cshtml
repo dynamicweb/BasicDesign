@@ -1,0 +1,59 @@
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.Frontend
+@inherits ViewModelTemplate<OrderListViewModel>
+
+@{
+    string currentPageLink = "/Default.aspx?ID=" + Pageview.Page.ID;
+}    
+
+@functions {
+    void RenderPagination(string currentPageLink, OrderListViewModel model)
+    {
+        <ul class="pagination">
+            @{
+                string pageHrefTemplate = string.Format("<a class=\"page-link\" href=\"{0}&PageNum={{0}}&PageSize={{1}}\">{{0}}</a>", currentPageLink);
+            }
+            @for (int i = 1; i <= model.PageCount; i++)
+            {
+                var css = i == model.CurrentPage
+                ? "page-item active"
+                : "page-item";
+                <li class="@css">
+                    @string.Format(pageHrefTemplate, i, model.PageSize)
+                </li>
+            }
+        </ul>
+    }
+}
+
+<h3>My Orders</h3>
+
+@if (Model.Orders != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Price</th>
+                <th>Payment Method</th>
+                <th>Shipping Method</th>
+                <th>Order State</th>
+            </tr>
+        </thead>
+        
+        @foreach (var order in Model.Orders)
+        {
+            string orderLink = currentPageLink + "&amp;OrderId=" + order.Id;
+            <tr>
+                <td><a href="@orderLink">@order.Id</a></td>
+                <td>@order.CreatedAt.ToShortDateString() @order.CreatedAt.ToShortTimeString()</td>
+                <td>@order.Price.PriceFormatted</td>
+                <td>@order.PaymentMethod.Name</td>
+                <td>@order.ShippingMethod.Name</td>
+                <td>@order.StateName</td>
+            </tr>
+        }
+    </table>
+    <text>@{RenderPagination(currentPageLink, Model);}</text>
+}

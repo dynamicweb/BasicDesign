@@ -8,11 +8,12 @@
     var pageService = new Dynamicweb.Content.PageService();
     var cartPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "cart");
     var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
+    var myOrders = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myorders");
 }
 
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">BasicDesign</a>
+        <a class="navbar-brand">BasicDesign</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,21 +42,41 @@
                 }
             </ul>
         </div>
-        <div class="d-flex align-items-center">
+
+        <ul class="navbar-nav">
             <!-- Profile -->
-            @if (profilePage != null)
-            {
-                <a class="text-reset me-3" href="/Default.aspx?ID=@profilePage.ID">
-                    <i class="fas fa-user"></i>
-                </a>
+            @if (profilePage != null) {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    @if (Pageview.User == null) {
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Default.aspx?ID=@profilePage.ID">Login</a></li>
+                        </ul>
+                    } else {
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Default.aspx?ID=@profilePage.ID">Profile</a></li>
+                            <!-- Customer Center-->
+                            @if (myOrders != null) {
+                                <li><a class="dropdown-item" href="/Default.aspx?ID=@myOrders.ID">My Orders</a></li>
+                            }
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href='@Pageview.Area.UrlName/Admin/Public/ExtranetLogoff.aspx'>Logout</a></li>
+                        </ul>
+                    }
+                </li>
             }
             <!-- Cart -->
             @if (cartPage != null)
             {
-                <a class="text-reset me-3" href="/Default.aspx?ID=@cartPage.ID">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-            }
-        </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default.aspx?ID=@cartPage.ID">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+            }            
+        </ul>
+   
     </div>
 </nav>

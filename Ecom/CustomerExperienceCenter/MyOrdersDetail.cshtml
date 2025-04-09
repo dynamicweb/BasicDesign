@@ -1,0 +1,103 @@
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.Frontend
+@inherits ViewModelTemplate<OrderViewModel>
+
+<div class="col-md-12">
+    <h3>@Model.Id</h3>
+    <p>Date: @Model.CompletedDate</p>
+
+    <!--Orderlines etc.-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Translate("Product_name", "Product name")</th>
+                <th>@Translate("Quantity", "Quantity")</th>
+                <th>@Translate("Price", "Price")</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var line in Model.OrderLines)
+            {
+                <tr>
+                    <td>
+                        @line.ProductName
+                        @if (line.ProductVariantName != "")
+                        {
+                            @: (@line.ProductVariantName)
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(@line.UnitId))
+                        {
+                            @: (@line.UnitId)
+                        }
+                        <!--Order line fields-->
+                        @foreach (var field in line.OrderLineFields)
+                        {
+                            if (!string.IsNullOrWhiteSpace(@field.Value.ToString()))
+                            {
+                                <div style="font-size:12px;"><i>@field.Key.ToString()): @field.Value.ToString()</i></div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (line.OrderLineType.ToString() == "1")
+                        {
+                            <span></span>
+                        }
+                        else
+                        {
+                            @line.Quantity
+                        }
+                    </td>
+                    <td>@line.TotalPriceWithProductDiscounts.PriceWithVatFormatted</td>
+
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>Shipping (@Model.ShippingMethod.Name)</td>
+                <td></td>
+                <td>@Model.ShippingFee.PriceWithVatFormatted</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Payment (@Model.PaymentMethod.Name)</td>
+                <td></td>
+                <td>@Model.PaymentFee.PriceWithVatFormatted</td>
+                <td></td>
+            </tr>
+
+            <tr class="total">
+                <th>Total</th>
+                <th></th>
+                <th>@Model.Price.PriceWithVatFormatted</th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <div class="row g-0">
+        <div class="col-md-6 mb-4">
+            <h4>Shipped To</h4>
+            <div>@Model.CustomerFirstName @Model.CustomerSurname</div>
+            <div>@Model.CustomerAddress</div>
+            <div>@Model.CustomerZip @Model.CustomerCity</div>
+            <div>@Model.CustomerCountry</div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <h4>Billed to</h4>
+            <div>@Model.DeliveryFirstName @Model.DeliverySurname</div>
+            <div>@Model.DeliveryAddress</div>
+            <div>@Model.DeliveryZip @Model.DeliveryCity</div>
+            <div>@Model.DeliveryCountry</div>
+        </div>
+    </div>
+
+</div>
