@@ -1,0 +1,83 @@
+﻿@inherits ViewModelTemplate<Dynamicweb.Users.Frontend.UserCreate.UserCreateViewModel>
+@using Dynamicweb
+@using Dynamicweb.Rendering
+@using Dynamicweb.Users.Frontend.UserCreate
+
+@{
+    var pageService = new Dynamicweb.Content.PageService();
+    var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
+    var action = Model.GetCreateUserLink(Pageview.Page.ID);
+}
+
+<div>
+
+    <!-- Register account-->
+    @if (Pageview.User == null)
+    {
+
+        <form method="post" action="@action">
+        <!-- Username -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-username" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">Username</label>
+        </div>
+
+        <!-- First name -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-firstname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">First name</label>
+        </div>
+
+        <!-- Last name -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">Last name</label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-outline mb-4">
+            <input type="email" id="create-email" name='' class="form-control" required />
+            <label class="form-label" for="form2Example1">Email</label>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">Phone</label>
+        </div>
+
+        <!-- Address -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">Address</label>
+        </div>
+
+        <!-- Zip code -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">Zip</label>
+        </div>
+
+        <!-- City -->
+        <div class="form-outline mb-4">
+            <input type="text" id="create-lastname" name='' class="form-control" />
+            <label class="form-label" for="form2Example1">City</label>
+        </div>
+        
+        <p>
+                <i>When you submit this form, an email with a confirmation link will be sent to you.</i>
+        </p>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4 float-end">Create user</button>
+        </form>
+
+        <p>Already have an account? <a href="/Default.aspx?ID=@profilePage.ID">Log in</a></p>
+
+
+    }
+    else
+    {
+        <p>You're already registered and logged in - <a href="/Default.aspx?ID=@profilePage.ID">go to profile</a>.</p>
+    }
+</div>

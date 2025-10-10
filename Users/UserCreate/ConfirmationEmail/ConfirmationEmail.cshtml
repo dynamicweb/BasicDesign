@@ -1,0 +1,16 @@
+﻿@inherits ViewModelTemplate<Dynamicweb.Users.Frontend.UserCreate.UserCreateViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Users.Frontend.UserCreate
+
+<!doctype html>
+<html>
+<body>
+    <h1>Welcome@(!string.IsNullOrWhiteSpace(Model.UserName) ? $", {Model.UserName}" : "")</h1>
+    <p>Please confirm your email address to activate your account.</p>
+    <p>
+        <a href="@Model.ApprovalLink" style="display:inline-block;padding:12px 18px;text-decoration:none;">Confirm &amp; Set Password</a>
+    </p>
+    <p>If the button doesn’t work, copy and paste this link into your browser:</p>
+    <p>@Model.ApprovalLink</p>
+</body>
+</html>
