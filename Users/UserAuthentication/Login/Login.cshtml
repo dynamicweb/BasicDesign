@@ -1,0 +1,91 @@
+﻿@inherits ViewModelTemplate<Dynamicweb.Users.Frontend.UserAuthentication.UserAuthenticationViewModel>
+@using Dynamicweb
+@using Dynamicweb.Rendering
+@using Dynamicweb.Users.Frontend.UserAuthentication
+
+@{
+    var pageService = new Dynamicweb.Content.PageService();
+    var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
+    var redirectPage = Model.RedirectAfterLogin;
+}
+
+@if (Pageview.User == null)
+{
+    <div class="">
+        <form method="post">
+            <input type="hidden" name="redirect" value="@redirectPage" />
+
+            <!-- Username -->
+            <div class="form-outline mb-4">
+                <input type="text" id="login-username" name="username" class="form-control" required />
+                <label class="form-label" for="login-username">Username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="login-password" name="password" class="form-control" required />
+                <label class="form-label" for="login-password">Password</label>
+            </div>
+
+            <div class="actions">
+                <!-- Submit button -->
+                <button type="submit" name="LoginAction" value="Login" class="btn btn-primary btn-block mb-4 float-end">Sign in</button>
+                @* Optional links *@
+                @if (!string.IsNullOrEmpty(Model.CreatePasswordLink))
+                {
+                    <a href="@Model.CreatePasswordLink">Forgot / set password</a>
+                }
+
+            </div>
+
+            @* Show an authentication result if present *@
+            @if (Model.Result != UserAuthenticationResultType.None)
+            {
+                <div class="login-result">@Translate(Model.Result.ToString())</div>
+            }
+        </form>
+    </div>
+
+    <div class="clearfix mb-4"></div>
+
+    @* Register and External Login*@
+    <div>
+        @if (!string.IsNullOrEmpty(Model.CreateUserLink))
+        {
+            <p>Don't have an account? <a href="@Model.CreateUserLink">Register</a>
+                @if (Model.ExternalLogins?.Any() == true)
+                {
+                  <text>or...</text>   
+                }
+            </p>
+        }
+
+        @foreach (var provider in Model.ExternalLogins)
+        {
+            <form class="grid grid-1 gap-4 mb-4" method="post">
+                <button type="submit" name="DwExternalLoginProvider" value="@provider.Id" class="btn btn-outline-primary w-100" data-dw-button>
+                    <span class="hstack gap-2 justify-content-center align-items-center">
+                        @if (provider.Icon != null)
+                        {
+                            if (provider.Icon.Contains(".svg"))
+                            {
+                                <span class="icon-3">
+                                    @ReadFile(provider.Icon)
+                                </span>
+                            }
+                            else
+                            {
+                                <img src="/Admin/Public/GetImage.ashx?image=@(provider.Icon)&width=18&format=webp">
+                            }
+                        }
+                        <span>Sign in with @provider.Name</span>
+                    </span>
+                </button>
+            </form>
+        }
+    </div>
+}
+else
+{
+    <p>You're already logged in - <a href="/Default.aspx?ID=@profilePage.ID">go to profile</a>.</p>
+}

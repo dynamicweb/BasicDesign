@@ -1,0 +1,79 @@
+@inherits ViewModelTemplate<Dynamicweb.Frontend.UserViewModel>
+@using Dynamicweb
+@using Dynamicweb.Rendering
+
+<!-- Show profile-->
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="@Model.Image" alt="Admin" class="rounded-circle" width="150">
+            }
+            else
+            {
+                <img src="/Files/Templates/Designs/BasicDesign/Users/default_avatar.png" alt="Admin" class="rounded-circle" width="150">
+            }
+            <div class="mt-3">
+                <h4>@Model.UserName</h4>
+                <p class="text-secondary mb-1">@Model.JobTitle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.FirstName @Model.LastName
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.Email
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Phone</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.Phone
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Mobile</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.PhoneMobile
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.Address, @Model.Zip, @Model.City, @Model.CountryCode
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-primary" href="@Pageview.Area.UrlName/Admin/Public/ExtranetLogoff.aspx">Log out</a>
+            </div>
+        </div>
+    </div>
+</div>
