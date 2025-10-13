@@ -5,7 +5,7 @@
 
 @{
     var pageService = new Dynamicweb.Content.PageService();
-    var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
+    var loginPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "login");
     var action = Model.GetCreateUserLink(Pageview.Page.ID);
 }
 
@@ -72,12 +72,12 @@
         <button type="submit" class="btn btn-primary btn-block mb-4 float-end">Create user</button>
         </form>
 
-        <p>Already have an account? <a href="/Default.aspx?ID=@profilePage.ID">Log in</a></p>
+        <p>Already have an account? <a href="/Default.aspx?ID=@loginPage.ID">Log in</a></p>
 
 
     }
     else
     {
-        <p>You're already registered and logged in - <a href="/Default.aspx?ID=@profilePage.ID">go to profile</a>.</p>
+        <p>You're already registered and logged in - <a href="/Default.aspx?ID=@loginPage.ID">go to profile</a>.</p>
     }
 </div>
