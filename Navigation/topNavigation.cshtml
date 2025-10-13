@@ -7,6 +7,7 @@
 @{
     var pageService = new Dynamicweb.Content.PageService();
     var cartPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "cart");
+    var loginPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "login");
     var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
     var myOrders = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myorders");
 }
@@ -52,7 +53,7 @@
                     </a>
                     @if (Pageview.User == null) {
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/Default.aspx?ID=@profilePage.ID">Login</a></li>
+                            <li><a class="dropdown-item" href="/Default.aspx?ID=@loginPage.ID">Login</a></li>
                         </ul>
                     } else {
                         <ul class="dropdown-menu">
