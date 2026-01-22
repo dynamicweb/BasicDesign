@@ -10,6 +10,9 @@
     var loginPage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "login");
     var profilePage = pageService.GetPageByNavigationTag(@Pageview.AreaID, "profile");
     var myOrders = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myorders");
+    var myLedger = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myledger");
+    var myQuotes = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myquotes");
+    var mySubscriptions = pageService.GetPageByNavigationTag(@Pageview.AreaID, "mysubscriptions");
 }
 
 <nav class="navbar navbar-expand-lg">
@@ -61,6 +64,18 @@
                             <!-- Customer Center-->
                             @if (myOrders != null) {
                                 <li><a class="dropdown-item" href="/Default.aspx?ID=@myOrders.ID">My Orders</a></li>
+                            }
+                            @if (myLedger != null)
+                            {
+                                <li><a class="dropdown-item" href="/Default.aspx?ID=@myLedger.ID">My Ledger</a></li>
+                            }
+                            @if (myQuotes != null)
+                            {   
+                                <li><a class="dropdown-item" href="/Default.aspx?ID=@myQuotes.ID">My Quotes</a></li>
+                            }
+                            @if (mySubscriptions!= null)
+                            {
+                                <li><a class="dropdown-item" href="/Default.aspx?ID=@mySubscriptions.ID">My Subscriptions</a></li>
                             }
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href='@Pageview.Area.UrlName/Admin/Public/ExtranetLogoff.aspx'>Logout</a></li>
