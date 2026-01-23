@@ -1,5 +1,25 @@
 @inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
 
+<script>
+    function updateCart() { // A simple function to update the cart page - currently hardcoded to step2, which in this design is the Payment/Shipping-step. Adjust accordingly if used elsewhere.
+        var form = document.getElementById('ordersubmit');
+        var field = document.createElement('input');
+        field.type = 'hidden';
+        field.name = 'CartV2.GotoStep2';
+        field.id = 'CartV2.GotoStep2';
+        field.value = 'Update';
+        form.appendChild(field);
+        form.submit();
+    }
+
+    function clearRadioGroup(name) { // This function is used to clear the payment/saved cards radio button groups when the other is selected
+        var group = document.getElementsByName(name);
+        for (var i = 0; i < group.length; i++) {
+            group[i].checked = false;
+        }
+    }
+
+</script>
 
 <div class="col-md-12">
     <h3>Shopping Cart</h3>
@@ -81,7 +101,6 @@
     </table>
 </div>
 
-
 <form name="ordersubmit" id="ordersubmit" method="post" role="form">
 
     <!--Vouchers & Gift Cards-->
@@ -99,7 +118,7 @@
                 </div>
                 <div class="card-body">
                     <button type="submit" name='@GetValue("CartV2.CurrentStepButtonName")' id='@GetValue("CartV2.CurrentStepButtonName")' class="submitter btn btn-primary float-end">Apply</button>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
@@ -111,11 +130,66 @@
                 <h3 class="mb-4 text-uppercase">Select Payment Method</h3>
                 @foreach (var paymentmethod in GetLoop("Paymethods")) //Loop through payment methods
                 {
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="EcomCartPaymethodID" id='EcomCartPaymethodID_@paymentmethod.GetValue("Ecom:Cart.Paymethod.ID")' value='@paymentmethod.GetValue("Ecom:Cart.Paymethod.ID")' checked='checked' />
-                        <label class="form-check-label" for='EcomCartPaymethodID_@paymentmethod.GetValue("Ecom:Cart.Paymethod.ID")'>@paymentmethod.GetValue("Ecom:Cart.Paymethod.Name")</label>
+                    var isSelected = "";
+                    var saveCard = "";
+
+                    if (!string.IsNullOrWhiteSpace(paymentmethod.GetString("Ecom:Cart.Paymethod.IsSelected"))) // Check if this payment method is selected
+                    {
+                        isSelected = "checked";
+                    }
+
+                    <div class="d-flex flex-row pb-3">
+                        <div class="d-flex align-items-center pe-2">
+                            <input class="form-check-input" type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_@paymentmethod.GetValue("Ecom:Cart.Paymethod.ID")"
+                                   value='@paymentmethod.GetValue("Ecom:Cart.Paymethod.ID")' onclick="clearRadioGroup('EcomCartSavedCardID');updateCart();" @isSelected />
+                        </div>
+                        <div class="rounded border d-flex w-100 p-3 align-items-center">
+                            <p class="mb-0">
+                                <i class="fa-solid fa-credit-card fa-lg text-primary pe-2"></i>@paymentmethod.GetValue("Ecom:Cart.Paymethod.Name")
+                            </p>
+                            @if (paymentmethod.GetString("Ecom:Cart.Paymethod.SupportSavedCard") == "true" && !string.IsNullOrWhiteSpace(paymentmethod.GetString("Ecom:Cart.Paymethod.IsSelected"))) // If payment method supports it, make it possible to save it
+                            {
+                                <div class='ms-auto'>
+                                    <input type='checkbox' name='EcomOrderSavedCardCreate' id='EcomOrderSavedCardCreate_@paymentmethod.GetString("Ecom:Cart.Paymethod.ID")' value='true' /> Save
+                                    <input type='hidden' name="EcomOrderSavedCardName" id="MySavedCardName" value='@paymentmethod.GetValue("Ecom:Cart.Paymethod.Name")' />
+                                </div>
+                            }
+                        </div>
                     </div>
                 }
+                @* Saved Payment Methods *@
+                @{
+                    var savedcards = GetLoop("SavedCards");
+                }
+                @if (savedcards.Any())
+                {
+                    <br>
+                    <h4 class="mb-4 text-uppercase">Use a saved card</h4>
+                    @foreach (var savedcard in savedcards)
+                    {
+
+                        var isSelected = "";
+
+                        if (!string.IsNullOrWhiteSpace(savedcard.GetString("Ecom:SavedCard.IsSelected"))) // Check if this payment method is selected
+                        {
+                            isSelected = "checked";
+                        }
+                        // Saved-card, err, card
+                        <div class="d-flex flex-row pb-3">
+                            <div class="d-flex align-items-center pe-2">
+                                <input class="form-check-input" type="radio" name="EcomCartSavedCardID" id="EcomCartSavedCardID_@savedcard.GetString("Ecom:SavedCard.ID")"
+                                       value="@savedcard.GetString("Ecom:SavedCard.ID")" onclick="clearRadioGroup('EcomCartPaymethodID');updateCart();" @isSelected />
+                            </div>
+                            <div class="rounded border d-flex w-100 p-3 align-items-center">
+                                <p class="mb-0">
+                                    <i class="fab fa-cc-@savedcard.GetString("Ecom:SavedCard.CardType").ToLower() fa-lg text-primary pe-2"></i>@savedcard.GetString("Ecom:SavedCard.Name")
+                                </p>
+                                <div class="ms-auto">@savedcard.GetString("Ecom:SavedCard.Identifier")</div>
+                            </div>
+                        </div>
+                    }
+                }
+
             </div>
         </div>
         <!--Shipping Methods-->
@@ -124,9 +198,23 @@
                 <h3 class="mb-4 text-uppercase">Select Shipping Method</h3>
                 @foreach (var shippingmethod in GetLoop("Shippingmethods")) //Loop through shipping methods
                 {
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="EcomCartShippingmethodID" id='EcomCartShippingmethodID_@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.ID")' value='@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.ID")' checked='checked' />
-                        <label class="form-check-label" for='EcomCartShippingmethodID_@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.ID")'>@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.Name")</label>
+                    var isSelected = "";
+
+                    if (!string.IsNullOrWhiteSpace(shippingmethod.GetString("Ecom:Cart.Shippingmethod.IsSelected"))) // Check if this shipping method is selected
+                    {
+                        isSelected = "checked";
+                    }
+
+                    <div class="d-flex flex-row pb-3">
+                        <div class="d-flex align-items-center pe-2">
+                            <input class="form-check-input" type="radio" name="EcomCartShippingmethodID" id="EcomCartShippingmethodID_@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.ID")"
+                                   value='@shippingmethod.GetValue("Ecom:Cart.Shippingmethod.ID")' onclick="updateCart();" @isSelected />
+                        </div>
+                        <div class="rounded border d-flex w-100 p-3 align-items-center">
+                            <p class="mb-0">
+                                <i class="fa-solid fa-truck"></i> @shippingmethod.GetValue("Ecom:Cart.Shippingmethod.Name")
+                            </p>
+                        </div>
                     </div>
                 }
             </div>
@@ -134,7 +222,7 @@
     </div>
 
     <div class="col-md-12">
-        <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Complete", "Complete")</button>
+        <button type="submit" name='@GetValue("CartV2.NextStepButtonName")' id='@GetValue("CartV2.NextStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Continue", "Continue")</button>
         <button type="submit" name='@GetValue("CartV2.PreviousStepButtonName")' id='@GetValue("CartV2.PreviousStepButtonName")' class="submitter btn btn-primary float-end">@Translate("Back", "Back")</button>
     </div>
 </form>
