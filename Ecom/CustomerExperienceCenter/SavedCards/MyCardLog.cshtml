@@ -1,0 +1,31 @@
+@inherits ViewModelTemplate<SavedCardLogListViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.Frontend.SavedCards
+
+@if (Model.SavedCardLogList == null || Model.SavedCardLogList.Count < 1)
+{
+    <div class="text-center">
+        <div>@Translate("No errors registered for this card")</div>
+    </div>
+}
+else
+{
+    foreach (var log in Model.SavedCardLogList)
+    {
+        string listName = !string.IsNullOrEmpty("") ? "" : Translate("Saved Card Logs");
+        int listItemsCount = Model.SavedCardLogList.Count();
+
+        <div>
+            @if (listItemsCount > 0)
+            {
+                <div>
+                    <p><strong>Time:</strong> @log.Time.ToString()</p>
+                    <p><strong>OrderId:</strong> @log.OrderId</p>
+                    <p><strong>Message:</strong> @log.Message</p>
+                </div>
+            }
+            else
+            { }
+        </div>
+    }
+}
