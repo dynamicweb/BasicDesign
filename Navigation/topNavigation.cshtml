@@ -13,6 +13,7 @@
     var myLedger = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myledger");
     var myQuotes = pageService.GetPageByNavigationTag(@Pageview.AreaID, "myquotes");
     var mySubscriptions = pageService.GetPageByNavigationTag(@Pageview.AreaID, "mysubscriptions");
+    var myCards = pageService.GetPageByNavigationTag(@Pageview.AreaID, "mycards");
 }
 
 <nav class="navbar navbar-expand-lg">
@@ -76,6 +77,10 @@
                             @if (mySubscriptions!= null)
                             {
                                 <li><a class="dropdown-item" href="/Default.aspx?ID=@mySubscriptions.ID">My Subscriptions</a></li>
+                            }
+                            @if (myCards != null)
+                            {
+                                <li><a class="dropdown-item" href="/Default.aspx?ID=@myCards.ID">My Cards</a></li>
                             }
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href='@Pageview.Area.UrlName/Admin/Public/ExtranetLogoff.aspx'>Logout</a></li>
