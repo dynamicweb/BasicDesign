@@ -18,6 +18,7 @@ This project is a barebones design used to:
   * Addresses (Billing/Shipping)
   * Payment methods
   * Shipping Methods
+  * Vouchers & Gift Cards
   * Saving cards & using a saved card
   * Receipt
 * Customer Experience Center:
