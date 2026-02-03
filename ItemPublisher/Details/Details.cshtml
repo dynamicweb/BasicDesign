@@ -1,0 +1,19 @@
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering;
+
+<div>
+    @foreach (var group in GetLoop("ItemPublisher:Item.Groups"))
+    {
+        <h2>Item field group name: @group.GetValue("ItemPublisher:Item.Group.Name")</h2>
+        <p>This item field group contains the following fields:</p>
+         <ul> 
+            @foreach (var field in group.GetLoop("ItemPublisher:Item.Group.Fields"))
+            {
+                <li><b>@field.GetValue("ItemPublisher:Item.Field.Name"):</b> @field.GetValue("ItemPublisher:Item.Field") </li>
+            }
+         </ul>
+    }
+</div>
+    
+<a class="btn btn-link" href="Default.aspx?Id=@Pageview.Page.ID">@Translate("Back_to_list", "Back to list")</a>
+    

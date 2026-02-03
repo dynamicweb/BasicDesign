@@ -1,0 +1,20 @@
+@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering;
+
+@{
+        var Items = GetLoop("ItemPublisher:Items.List");
+        int count = 0;
+}
+
+@if (GetBoolean("ItemPublisher:Items.Any"))
+    {
+        @foreach (var item in Items) {
+            count = count+1;
+            <h1>This is item @count</h1>
+            <p>These are the template tags and loops you can use to render content from this item:</p>
+            <p>@item.TemplateTags()</p>
+            <p>The details template on the app is loaded if the url contains the parameter 'cmd=details' and the variable 'itemID' with a valid item id as the value:</p>
+            <a href='@item.GetValue("ItemPublisher:Item.DetailsUrl")&cmd=details'>Load details template</a>
+            <hr>
+        }
+    }
