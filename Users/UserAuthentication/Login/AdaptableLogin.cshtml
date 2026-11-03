@@ -1,0 +1,133 @@
+﻿@inherits ViewModelTemplate<Dynamicweb.Users.Frontend.UserAuthentication.UserAuthenticationViewModel>
+@using Dynamicweb.Users.Frontend.UserAuthentication
+@using Dynamicweb.Rendering
+@using Dynamicweb
+
+@{
+    // Handy flags
+    bool requiresVerification =
+        Model.Result == UserAuthenticationResultType.MfaVerificationRequired
+        || Model.Result == UserAuthenticationResultType.MfaVerificationFailed;
+
+    // "Passwordless" login types (server will email code or magic link after the first POST)
+    bool isPasswordless =
+        Model.LoginType.ToString().Equals("TOTP", StringComparison.OrdinalIgnoreCase)
+        || Model.LoginType.ToString().Equals("MagicLinks", StringComparison.OrdinalIgnoreCase);
+
+    bool isMfa =
+        Model.LoginType.ToString().Equals("MFA", StringComparison.OrdinalIgnoreCase);
+
+    string? redirect = Model.RedirectAfterLogin;
+}
+
+<div class="login">
+
+  @* Result banner *@
+  @if (Model.Result != UserAuthenticationResultType.None
+      && Model.Result != UserAuthenticationResultType.MfaVerificationRequired) {
+
+      var isSuccess =
+          Model.Result == UserAuthenticationResultType.Success
+          || Model.Result == UserAuthenticationResultType.PasswordChangedSuccess;
+
+      <div class="alert alert-@(isSuccess ? "success" : "danger")" role="alert">
+          @Translate(Model.Result.ToString())
+      </div>
+  }
+
+  @* Step 2: verification (code entry) *@
+  @if (requiresVerification) {
+
+      <h2>@Translate("Verify sign-in")</h2>
+
+      @if (Model.MfaCodeExpiration.HasValue) {
+          <p class="text-muted">
+              @Translate("Enter the code we sent you. It expires at:")
+              <strong>@Model.MfaCodeExpiration.Value.ToString("HH:mm:ss")</strong>
+          </p>
+      }
+
+      <form method="post">
+          <input type="hidden" name="redirect" value="@redirect" />
+          <input type="hidden" name="dologin" value="1" />
+
+          <label for="code">@Translate("Code")</label>
+          <input id="code" name="code" autocomplete="one-time-code" required />
+
+          <div class="mt-3">
+              <button type="submit" class="btn btn-primary">
+                  @Translate("Verify")
+              </button>
+          </div>
+      </form>
+
+      @* Optional: a "start over" link could just reload the page *@
+  }
+  else {
+
+      @* Step 1: primary login *@
+      <h2>@Translate("Sign in")</h2>
+
+      <form method="post">
+          <input type="hidden" name="redirect" value="@redirect" />
+
+          <label for="username">@Translate("Email")</label>
+          <input id="username" name="username" type="email" autocomplete="username" required />
+
+          @* Password is required for classic login + MFA (first step) *@
+          @if (!isPasswordless) {
+              <label for="password">@Translate("Password")</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+          }
+          else {
+              @* This is the critical "passwordless trigger" *@
+              <input type="hidden" name="dologin" value="1" />
+              <p class="text-muted">
+                  @Translate("We’ll email you a code or a sign-in link.")
+              </p>
+          }
+
+          <div class="mt-2">
+              <input type="checkbox" value="True" name="Autologin" id="remember-me" />
+              <label for="remember-me">@Translate("Keep me signed in")</label>
+          </div>
+
+          <div class="mt-3">
+              <button type="submit" class="btn btn-primary">
+                  @(isPasswordless ? Translate("Send me a code") : Translate("Sign in"))
+              </button>
+          </div>
+
+          <div class="mt-3">
+              @if (!string.IsNullOrEmpty(Model.CreatePasswordLink)) {
+                  <a href="@Model.CreatePasswordLink">@Translate("Forgot / set password")</a>
+              }
+              @if (!string.IsNullOrEmpty(Model.CreateUserLink)) {
+                  <span> · </span>
+                  <a href="@Model.CreateUserLink">@Translate("Create account")</a>
+              }
+          </div>
+      </form>
+
+      @* External providers *@
+      @if (Model.ExternalLogins?.Any() == true) {
+          <hr />
+          <div class="external-logins">
+              <div class="text-muted">@Translate("Or continue with")</div>
+
+              @foreach (var p in Model.ExternalLogins) {
+                  <form method="post" class="mt-2">
+                      <input type="hidden" name="redirect" value="@redirect" />
+                      <button type="submit" name="DwExternalLoginProvider" value="@p.Id" class="btn btn-outline-primary">
+                          @if (!string.IsNullOrEmpty(p.Icon)) {
+                              <img src="@p.Icon" alt="" style="height:18px; width:auto;" />
+                          }
+                          <span>@p.Name</span>
+                      </button>
+                  </form>
+              }
+          </div>
+      }
+  }
+
+</div>

@@ -1,56 +1,91 @@
 ﻿@using Dynamicweb.Rendering
+@using Dynamicweb.Frontend
 @using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Security.UserManagement
+@using System.Globalization
 @inherits ViewModelTemplate<ProductViewModel>
+
+@{
+    //Used by several sections below
+    int currentPageId = Pageview?.ID ?? 0;
+    var currentUser = UserContext.Current.User;
+
+    //Unit - the product page does not react to UnitID, so the selected unit is resolved here and drives price, stock and add to cart
+    var unitOptions = Model.UnitOptions ?? new List<UnitOptionViewModel>();
+    string requestedUnitId = Dynamicweb.Context.Current?.Request["UnitID"];
+    var selectedUnit = unitOptions.FirstOrDefault(unit => unit.Id == requestedUnitId)
+        ?? unitOptions.FirstOrDefault(unit => unit.Id == Model.DefaultUnitId)
+        ?? unitOptions.FirstOrDefault();
+    string selectedUnitId = selectedUnit?.Id ?? string.Empty;
+}
 
 <!-- content -->
 <section class="py-5">
     <div class="container">
+        <!--Breadcrumb from the most primary group path-->
+        @{
+            var groupPath = Model.GroupPaths?.FirstOrDefault();
+        }
+        @if (groupPath?.Count > 0)
+        {
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    @foreach (var group in groupPath)
+                    {
+                        <li class="breadcrumb-item"><a href="@group.GetGroupLink(currentPageId)">@group.Name</a></li>
+                    }
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+                </ol>
+            </nav>
+        }
+
         <div class="row gx-5">
             <aside class="col-lg-6">
                 <!--Default image-->
-                <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                    <div data-fslightbox="mygalley" class="rounded-4" data-type="image">
-                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="@Model.DefaultImage.Value" />
+                @if (!string.IsNullOrEmpty(Model.DefaultImage?.Value))
+                {
+                    <div class="border rounded-4 mb-3 d-flex justify-content-center">
+                        <div data-fslightbox="mygalley" class="rounded-4" data-type="image">
+                            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="@Model.DefaultImage.Value" alt="@Model.Name" />
+                        </div>
                     </div>
-                </div>
-                <!--Assets assigned to 'Images' asset category-->
-                <div class="d-flex justify-content-center mb-3">
-                    @if (Model.AssetCategories.Count > 0)
-                    {
-                        foreach (var assetcategory in Model.AssetCategories)
+                }
+                <!--Assets assigned to the 'Images' asset category - thumbnails only make sense with more than one image-->
+                @{
+                    var galleryImages = (Model.AssetCategories ?? new List<AssetCategoryViewModel>())
+                        .Where(assetcategory => string.Equals(assetcategory.SystemName, "Images", StringComparison.OrdinalIgnoreCase))
+                        .SelectMany(assetcategory => assetcategory.Assets ?? new List<MediaViewModel>())
+                        .ToList();
+                }
+                @if (galleryImages.Count > 1)
+                {
+                    <div class="d-flex justify-content-center mb-3">
+                        @foreach (var asset in galleryImages)
                         {
-                            if (assetcategory.Name == "Images")
-                            {
-                                foreach (var asset in assetcategory.Assets)
-                                {
-                                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image" href="@asset.Value">
-                                        <img width="60" height="60" class="rounded-2" src="@asset.Value" />
-                                    </a>
-                                }
-                            }
+                            <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image" href="@asset.Value">
+                                <img width="60" height="60" class="rounded-2" src="@asset.Value" alt="@asset.DisplayName" />
+                            </a>
                         }
-                    }
-                </div>
-                <!-- thumbs-wrap.// -->
-                <!-- gallery-wrap .end// -->
+                    </div>
+                }
             </aside>
             <main class="col-lg-6">
                 <div class="ps-lg-3">
                     <h4 class="title text-dark">
                         @Model.Name
                     </h4>
-                    <div class="d-flex flex-row my-3">
+                    <div class="d-flex flex-row flex-wrap my-3">
                         <!--Ratings-->
-                        @if (Model.Rating != 0)
+                        @if (Model.Rating > 0)
                         {
                             double rating = Model.Rating.Value;
+                            int fullStars = (int)Math.Floor(rating);
                             <div class="text-warning mb-1 me-2">
-                                @while (rating > 1)
+                                @for (int star = 0; star < fullStars; star++)
                                 {
                                     <i class="fa fa-star"></i>
-                                    rating = rating - 1;
                                 }
-                                @if (rating > 0)
+                                @if (rating > fullStars)
                                 {
                                     <i class="fas fa-star-half-alt"></i>
                                 }
@@ -59,28 +94,103 @@
                                 </span>
                             </div>
                         }
-                        <!--Stock states-->
-                        @if (Model.StockStatus != null)
-                        {
-                            if (Model.StockStatus == "In Stock")
-                            {
-                                <span class="ms-2 text-success">@Model.StockStatus (@Model.StockLevel) </span>
-                            }
-                            if (Model.StockStatus == "Few in stock")
-                            {
-                                <span class="ms-2 text-warning">@Model.StockStatus (@Model.StockLevel) </span>
-                            }
-                            if (Model.StockStatus == "Out of stock")
-                            {
-                                <span class="ms-2 text-danger">@Model.StockStatus</span>
-                            }
+                        <!--Stock state - per unit when the product has units, the status text comes from the stock state configuration-->
+                        @{
+                            double? stockLevel = selectedUnit is not null ? selectedUnit.StockLevel : Model.StockLevel;
+                            bool neverOutOfStock = selectedUnit is not null ? selectedUnit.NeverOutOfStock : Model.NeverOutOfstock;
+                            bool isOutOfStock = !neverOutOfStock && stockLevel.HasValue && stockLevel <= 0;
                         }
+                        @if (neverOutOfStock || stockLevel.HasValue)
+                        {
+                            string stockText = !string.IsNullOrEmpty(Model.StockStatus) ? Model.StockStatus : isOutOfStock ? "Out of stock" : "In stock";
+                            <span class="ms-2 @(isOutOfStock ? "text-danger" : "text-success")">
+                                @stockText
+                                @if (!neverOutOfStock && stockLevel > 0)
+                                {
+                                    <text>(@stockLevel)</text>
+                                }
+                            </span>
+                        }
+                        <!--Skip placeholder delivery texts such as '-'-->
+                        @if (Model.StockDeliveryText?.Any(char.IsLetterOrDigit) == true)
+                        {
+                            <span class="ms-2 text-muted">@Model.StockDeliveryText</span>
+                        }
+                        @if (isOutOfStock && Model.ExpectedDelivery > DateTime.Now)
+                        {
+                            <span class="ms-2 text-muted">Expected @Model.ExpectedDelivery.Value.ToShortDateString()</span>
+                        }
+                    </div>
 
-                    </div>
-                    <!--Price-->
-                    <div class="mb-3">
-                        <span class="h5">@Model.Price.PriceWithVatFormatted</span>
-                    </div>
+                    <!--Discontinued product and its replacement-->
+                    @if (Model.Discontinued)
+                    {
+                        <div class="alert alert-warning">
+                            @(Model.DiscontinuedDate.HasValue ? "This product has been discontinued as of " + Model.DiscontinuedDate.Value.ToShortDateString() + "." : "This product has been discontinued.")
+                            @if (Model.TryGetReplacementProduct(out var replacementProduct))
+                            {
+                                <text>It has been replaced by <a href="@replacementProduct.GetProductLink(currentPageId)" class="alert-link">@replacementProduct.Name</a>.</text>
+                            }
+                        </div>
+                    }
+
+                    <!--Campaign badges-->
+                    @foreach (var discount in Model.ProductDiscounts ?? Enumerable.Empty<DiscountViewModel>())
+                    {
+                        string discountLabel = !string.IsNullOrEmpty(discount.CampaignName) ? discount.CampaignName : discount.Name;
+                        <span class="badge bg-danger me-1 mb-2" style="@(!string.IsNullOrEmpty(discount.CampaignColor) ? "background-color:" + discount.CampaignColor + " !important" : "")">
+                            @(discount.Percentage > 0 ? discountLabel + " -" + discount.Percentage + "%" : discountLabel)
+                        </span>
+                    }
+
+                    <!--Price - per unit when the product has units, with the before-discount price when there is a discount-->
+                    @{
+                        var unitPrice = selectedUnit is not null ? Model.GetPrice(selectedUnitId) : null;
+                        var price = unitPrice?.Price ?? Model.Price;
+                        var priceBeforeDiscount = unitPrice?.PriceBeforeDiscount ?? Model.PriceBeforeDiscount;
+                        bool showBeforePrice = price is not null && priceBeforeDiscount is not null && priceBeforeDiscount.Price > price.Price;
+                    }
+                    @if (price is not null)
+                    {
+                        <div class="mb-3">
+                            <span class="h5">@price.PriceFormatted</span>
+                            @if (showBeforePrice)
+                            {
+                                <del class="ms-2 text-muted">@priceBeforeDiscount.PriceFormatted</del>
+                            }
+                            @if (unitOptions.Count > 1 && selectedUnit is not null)
+                            {
+                                <span class="text-muted">/ @selectedUnit.Name</span>
+                            }
+                            @if (Model.PointPrice > 0)
+                            {
+                                <div class="small text-muted">or @Model.PointPrice points</div>
+                            }
+                        </div>
+                    }
+
+                    <!--Quantity prices for the selected unit-->
+                    @{
+                        var quantityPrices = (Model.Prices ?? new List<PriceListViewModel>())
+                            .Where(priceLine => priceLine.Quantity > 1 && (string.IsNullOrEmpty(priceLine.UnitId) || priceLine.UnitId == selectedUnitId))
+                            .OrderBy(priceLine => priceLine.Quantity)
+                            .ToList();
+                    }
+                    @if (quantityPrices.Count > 0)
+                    {
+                        <table class="table table-sm w-auto mb-3">
+                            <thead>
+                                <tr><th>Quantity</th><th>Price</th></tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var priceLine in quantityPrices)
+                                {
+                                    <tr><td>@priceLine.Quantity+</td><td>@priceLine.Price?.PriceFormatted</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+
                     <!--Description-->
                     <p>
                         @Model.ShortDescription
@@ -96,36 +206,201 @@
 
                         <dt class="col-3">Product Number</dt>
                         <dd class="col-9">@Model.Number</dd>
-                        <!--Category Brand_information-->
-                        @foreach (var category in @Model.ProductCategories)
+
+                        @if (!string.IsNullOrEmpty(Model.Manufacturer?.Name))
                         {
-                            if (category.Key == "brand_information")
-                            {
-                                foreach (var field in @category.Value.Fields)
+                            <dt class="col-3">Manufacturer</dt>
+                            <dd class="col-9">
+                                @if (!string.IsNullOrEmpty(Model.Manufacturer.Web))
                                 {
-                                    if (field.Key == "Brand_name")
-                                    {
-                                        <dt class="col-3">Brand</dt>
-                                        <dd class="col-9">@field.Value</dd>
-                                    }
+                                    <a href="@Model.Manufacturer.Web" target="_blank" rel="noopener">@Model.Manufacturer.Name</a>
                                 }
-                            }
+                                else
+                                {
+                                    @Model.Manufacturer.Name
+                                }
+                            </dd>
+                        }
+                        <!--Category Brand_information-->
+                        @{
+                            var brandField = Model.ProductCategories?.GetValueOrDefault("Brand_information")?.Fields?.GetValueOrDefault("Brand_name");
+                        }
+                        @if (!string.IsNullOrEmpty(brandField?.Value?.ToString()))
+                        {
+                            <dt class="col-3">Brand</dt>
+                            <dd class="col-9">@brandField.Value</dd>
                         }
                     </div>
 
                     <hr />
 
+                    <!--Variant selector - one option per variant group, combined into a VariantID like 'VO1.VO2'-->
+                    @{
+                        var variantGroups = Model.VariantGroups();
+                        var selectedVariantOptions = (Model.VariantId ?? string.Empty).Split('.');
+                    }
+                    @if (variantGroups.Count > 0)
+                    {
+                        <div class="mb-3" id="variantSelector" data-combinations="@string.Join(",", Model.VariantCombinations())">
+                            @foreach (var variantGroup in variantGroups)
+                            {
+                                <div class="mb-2">
+                                    <div class="fw-semibold mb-1">@variantGroup.Name</div>
+                                    <div class="d-flex flex-wrap gap-2" data-variant-group>
+                                        @foreach (var option in variantGroup.Options ?? new List<VariantOptionViewModel>())
+                                        {
+                                            string inputId = "variant_" + variantGroup.Id + "_" + option.Id;
+                                            bool isSelected = selectedVariantOptions.Contains(option.Id);
+                                            <input type="radio" class="btn-check" name="variantgroup_@variantGroup.Id" id="@inputId" value="@option.Id" @(isSelected ? "checked" : "") onchange="selectVariant()" />
+                                            <label class="btn btn-outline-secondary btn-sm d-flex align-items-center" for="@inputId">
+                                                @if (!string.IsNullOrEmpty(option.Color))
+                                                {
+                                                    <span class="d-inline-block rounded-circle border me-1" style="width: 1rem; height: 1rem; background-color: @option.Color;"></span>
+                                                }
+                                                else if (!string.IsNullOrEmpty(option.OptionImage?.Value))
+                                                {
+                                                    <img src="@option.OptionImage.Value" width="20" height="20" class="me-1" alt="" />
+                                                }
+                                                @option.Name
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            <div class="text-danger small d-none" id="variantNotAvailable">This combination is not available.</div>
+                        </div>
+                    }
+
+                    <!--Unit selector - reloads the page with UnitID so price and stock follow the unit-->
+                    @if (unitOptions.Count > 1)
+                    {
+                        <div class="mb-3">
+                            <label for="unitSelector" class="form-label fw-semibold">Unit</label>
+                            <select id="unitSelector" class="form-select w-auto" onchange="setQueryParameter('UnitID', this.value)">
+                                @foreach (var unit in unitOptions)
+                                {
+                                    <option value="@unit.Id" @(unit.Id == selectedUnitId ? "selected" : "")>@unit.Name - @unit.Price?.PriceFormatted</option>
+                                }
+                            </select>
+                        </div>
+                    }
+
+                    @if (Model.IsProductInCart())
+                    {
+                        <p class="text-success small"><i class="fa fa-check me-1"></i> This product is in your cart</p>
+                    }
+
                     <!--Add to cart-->
                     <form method="post">
-                        <div class="input-group">
-                            <input type="hidden" name="ProductId" value="@Model.Id" />
-                            <input type="hidden" name="VariantId" value="@Model.VariantId" />
-                            <input type="number" class="form-control" name="quantity" value="1" />
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary shadow-0" name="CartCmd" value="add"><i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
+                        <input type="hidden" name="ProductId" value="@Model.Id" />
+                        <input type="hidden" name="VariantId" value="@Model.VariantId" />
+                        <input type="hidden" name="UnitID" value="@selectedUnitId" />
+
+                        <!--Bill of materials - each configurable group posts its choice as productId or productId|variantId under the group's ID-->
+                        @{
+                            var bomConfiguration = Model.GetBomConfiguration();
+                        }
+                        @if (bomConfiguration.Items.Count > 0 || bomConfiguration.Groups.Count > 0)
+                        {
+                            <div class="mb-3">
+                                @if (bomConfiguration.Items.Count > 0)
+                                {
+                                    <div class="fw-semibold mb-1">Included</div>
+                                    <ul class="list-unstyled mb-2">
+                                        @foreach (var bomItem in bomConfiguration.Items)
+                                        {
+                                            <li>@bomItem.Quantity x @(bomItem.Product.GetProduct()?.Name ?? bomItem.Name)</li>
+                                        }
+                                    </ul>
+                                }
+                                @foreach (var bomGroup in bomConfiguration.Groups)
+                                {
+                                    <label for="bom_@bomGroup.Id" class="form-label fw-semibold">@bomGroup.Name</label>
+                                    <select id="bom_@bomGroup.Id" name="@bomGroup.Id" class="form-select mb-2">
+                                        <option value="">@(!string.IsNullOrEmpty(bomGroup.NoneSelectedText) ? bomGroup.NoneSelectedText : "None")</option>
+                                        @foreach (var bomProduct in bomGroup.Products)
+                                        {
+                                            string bomValue = string.IsNullOrEmpty(bomProduct.VariantId) ? bomProduct.ProductId : bomProduct.ProductId + "|" + bomProduct.VariantId;
+                                            <option value="@bomValue" @(bomProduct.ProductId == bomGroup.DefaultProduct?.ProductId ? "selected" : "")>@(bomProduct.GetProduct()?.Name ?? bomProduct.ProductId)</option>
+                                        }
+                                    </select>
+                                }
                             </div>
+                        }
+
+                        <!--Stock location - one choice per location of the selected unit, which also shows the stock there-->
+                        @{
+                            var stockUnits = (Model.StockUnits ?? new List<StockUnitViewModel>())
+                                .Where(stockUnit => stockUnit.StockLocationId > 0 && (string.IsNullOrEmpty(stockUnit.UnitId) || stockUnit.UnitId == selectedUnitId))
+                                .ToList();
+                        }
+                        @if (stockUnits.Count > 1)
+                        {
+                            var defaultStockUnit = stockUnits.FirstOrDefault(stockUnit => stockUnit.NeverOutOfStock || stockUnit.StockLevel > 0) ?? stockUnits.First();
+                            <fieldset class="mb-3">
+                                <legend class="form-label fw-semibold fs-6">Ship from</legend>
+                                @foreach (var stockUnit in stockUnits)
+                                {
+                                    string locationInputId = "stockLocation_" + stockUnit.StockLocationId;
+                                    string locationStock = stockUnit.NeverOutOfStock ? "In stock" : !string.IsNullOrEmpty(stockUnit.StockStatus) ? stockUnit.StockStatus : stockUnit.StockLevel + " in stock";
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="StockLocationID" id="@locationInputId" value="@stockUnit.StockLocationId" @(stockUnit == defaultStockUnit ? "checked" : "") />
+                                        <label class="form-check-label d-flex justify-content-between" for="@locationInputId">
+                                            <span>@stockUnit.StockLocationName</span>
+                                            <span class="@(stockUnit.NeverOutOfStock || stockUnit.StockLevel > 0 ? "text-success" : "text-danger")">@locationStock</span>
+                                        </label>
+                                    </div>
+                                }
+                            </fieldset>
+                        }
+
+                        <!--Quantity - follows the product's purchase rules for minimum quantity and step-->
+                        @{
+                            double minimumQuantity = Model.PurchaseMinimumQuantity > 0 ? Model.PurchaseMinimumQuantity.Value : 1;
+                            double quantityStep = Model.PurchaseQuantityStep > 0 ? Model.PurchaseQuantityStep.Value : 1;
+                        }
+                        <div class="d-flex gap-2">
+                            <input type="number" class="form-control" style="max-width: 6rem;" name="quantity" value="@minimumQuantity.ToString(CultureInfo.InvariantCulture)" min="@minimumQuantity.ToString(CultureInfo.InvariantCulture)" step="@quantityStep.ToString(CultureInfo.InvariantCulture)" aria-label="Quantity" />
+                            <button type="submit" class="btn btn-primary shadow-0" name="CartCmd" value="add" @(isOutOfStock ? "disabled" : "")><i class="me-1 fa fa-shopping-basket"></i> Add to cart</button>
                         </div>
                     </form>
+
+                    <!--Add to favorites - handled by the 'Customer Experience Center - Favorites' app on the page tagged 'Favorites'-->
+                    @{
+                        int favoritesPageId = GetPageIdByNavigationTag("Favorites");
+                    }
+                    @if (currentUser is not null && favoritesPageId > 0)
+                    {
+                        <form method="post" action="Default.aspx?ID=@favoritesPageId" class="mt-2">
+                            <input type="hidden" name="ProductId" value="@Model.Id" />
+                            <input type="hidden" name="ProductVariantId" value="@Model.VariantId" />
+                            <input type="hidden" name="UnitId" value="@selectedUnitId" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" class="btn btn-link px-0" name="FavoriteCmd" value="FavoriteListAddProduct"><i class="me-1 fa fa-heart"></i> Add to favorites</button>
+                        </form>
+                    }
+
+                    <!--Back in stock notification-->
+                    @if (isOutOfStock)
+                    {
+                        if (Model.BackInStockRegisteredForUser(selectedUnitId))
+                        {
+                            <p class="mt-3 text-muted">We will email you when this product is back in stock.</p>
+                        }
+                        else
+                        {
+                            <form method="post" class="mt-3">
+                                <input type="hidden" name="ProductID" value="@Model.Id" />
+                                <input type="hidden" name="VariantID" value="@Model.VariantId" />
+                                <input type="hidden" name="UnitID" value="@selectedUnitId" />
+                                <label for="notificationEmail" class="form-label">Notify me when this product is back in stock</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="notificationEmail" name="NotificationEmail" value="@currentUser?.Email" required />
+                                    <button type="submit" class="btn btn-outline-secondary" name="CartCmd" value="createnotificationforthisproduct">Notify me</button>
+                                </div>
+                            </form>
+                        }
+                    }
 
                 </div>
             </main>
@@ -149,12 +424,12 @@
                 </div>
             </div>
 
-            <!--If a Relation Group called "Related Products" exists render the related products-->
-            @foreach (var relationgroup in Model.RelatedGroups)
+            <!--All relation groups with products-->
+            @foreach (var relationgroup in Model.RelatedGroups ?? new List<RelatedGroupViewModel>())
             {
-                if (relationgroup.Name == "Related Products")
+                if (relationgroup.Products?.Count > 0)
                 {
-                    <div class="col-lg-4 col-sm-12">
+                    <div class="col-lg-4 col-sm-12 mb-4">
                         <div class="px-0 border rounded-2 shadow-0">
                             <div class="card">
                                 <div class="card-body">
@@ -163,16 +438,21 @@
                                     {
                                         <!--Use extension method to fetch the ProductViewModel for each product-->
                                         var productVM = product.GetProduct();
+                                        if (productVM is null)
+                                        {
+                                            continue;
+                                        }
+                                        string relatedLink = productVM.GetProductLink(currentPageId);
 
                                         <div class="d-flex mb-3">
-                                            <a href="?ProductID=@product.ProductId" class="me-3">
-                                                <img src="@productVM.DefaultImage.Value" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                                            <a href="@relatedLink" class="me-3">
+                                                <img src="@productVM.DefaultImage?.Value" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" alt="@productVM.Name" />
                                             </a>
                                             <div class="info">
-                                                <a href="?ProductID=@product.ProductId" class="nav-link mb-1">
+                                                <a href="@relatedLink" class="nav-link mb-1">
                                                     @productVM.Name
                                                 </a>
-                                                <strong class="text-dark">@productVM.Price.PriceWithVatFormatted</strong>
+                                                <strong class="text-dark">@productVM.Price?.PriceFormatted</strong>
                                             </div>
                                         </div>
                                     }
@@ -184,37 +464,191 @@
             }
 
         </div>
-        <!--Technical downloads-->
-        @if (Model.AssetCategories.Count > 0)
+
+        <!--Specifications - every field display group, plus the physical dimensions-->
+        @{
+            var displayGroups = (Model.FieldDisplayGroups ?? new Dictionary<string, CategoryFieldViewModel>()).Values
+                .Where(displayGroup => displayGroup.Fields?.Values.Any(field => !field.IsMatrix() && !string.IsNullOrEmpty(field.Value?.ToString())) == true)
+                .ToList();
+            bool hasDimensions = Model.Weight > 0 || Model.Width > 0 || Model.Height > 0 || Model.Depth > 0;
+        }
+        @if (displayGroups.Count > 0 || hasDimensions)
         {
-            foreach (var assetcategory in Model.AssetCategories)
+            <div class="row gx-4">
+                <div class="col-lg mb-4">
+                    <div class="border rounded-2 px-3 py-2 bg-white">
+                        <h4 class="title text-dark">Specifications</h4>
+                        <table class="table table-striped table-responsive">
+                            @foreach (var displayGroup in displayGroups)
+                            {
+                                <tbody>
+                                    <tr><th colspan="2">@displayGroup.Name</th></tr>
+                                    @foreach (var field in displayGroup.Fields.Values.Where(field => !field.IsMatrix() && !string.IsNullOrEmpty(field.Value?.ToString())))
+                                    {
+                                        <tr>
+                                            <td>@field.Name</td>
+                                            <td>
+                                                @if (field.GetLink() is LinkViewModel fieldLink)
+                                                {
+                                                    <a href="@fieldLink.Url">@fieldLink.Url</a>
+                                                }
+                                                else if (field.IsList())
+                                                {
+                                                    @string.Join(", ", field.GetList().Select(listOption => listOption.Name))
+                                                }
+                                                else
+                                                {
+                                                    @field.GetValueWithUnits()
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            @if (hasDimensions)
+                            {
+                                <tbody>
+                                    <tr><th colspan="2">Dimensions</th></tr>
+                                    @if (Model.Weight > 0)
+                                    {
+                                        <tr><td>Weight</td><td>@Model.Weight</td></tr>
+                                    }
+                                    @if (Model.Width > 0)
+                                    {
+                                        <tr><td>Width</td><td>@Model.Width</td></tr>
+                                    }
+                                    @if (Model.Height > 0)
+                                    {
+                                        <tr><td>Height</td><td>@Model.Height</td></tr>
+                                    }
+                                    @if (Model.Depth > 0)
+                                    {
+                                        <tr><td>Depth</td><td>@Model.Depth</td></tr>
+                                    }
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!--Matrix fields from the 'Consumables' category group, one box per field-->
+        @{
+            var matrixFieldNames = new[] { "Ingredients2", "Ingredients" };
+        }
+        <div class="row gx-4">
+            @foreach (var matrixFieldName in matrixFieldNames)
             {
-                if (assetcategory.SystemName == "technical_downloads")
+                var matrixField = Model.ProductCategories?.GetValueOrDefault("Consumables")
+                    ?.Fields?.GetValueOrDefault(matrixFieldName);
+                var matrix = matrixField?.GetMatrix();
+
+                if (matrix?.Rows.Count > 0)
                 {
-                    <div class="row gx-4">
-                        <div class="col-lg mb-4">
-                            <div class="border rounded-2 px-3 py-2 bg-white">
-                                <h4 class="title text-dark">Downloads</h4>
-                                <table class="table table-striped table-responsive">
-                                    <tbody>
-                                        @foreach (var asset in assetcategory.Assets)
+                    <div class="col-lg mb-4">
+                        <div class="border rounded-2 px-3 py-2 bg-white h-100">
+                            <h4 class="title text-dark">@matrixField.Name</h4>
+                            <table class="table table-striped table-responsive">
+                                <thead>
+                                    <tr>
+                                        @foreach (var matrixHeader in matrix.Headers)
                                         {
-                                            string[] assetstring = asset.Value.Split("/");
-                                            string filename = @assetstring.LastOrDefault();
-                                            <tr>
-                                                <td><i class="fa-regular fa-file"></i></td>
-                                                <td>@filename</td>
-                                                <td><a href="@asset.Value" download>Download</a></td>
-                                            </tr>
+                                            <th>@matrixHeader.Label</th>
                                         }
-                                    </tbody>
-                                </table>
-                            </div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var matrixRow in matrix.Rows)
+                                    {
+                                        <tr>
+                                            @foreach (var matrixCell in matrixRow.Cells)
+                                            {
+                                                <td>
+                                                    @if (matrixCell.GetLink() is LinkViewModel cellLink)
+                                                    {
+                                                        <a href="@cellLink.Url">@cellLink.Url</a>
+                                                    }
+                                                    else if (matrixCell.IsList())
+                                                    {
+                                                        @string.Join(", ", matrixCell.GetList().Select(listOption => listOption.Name))
+                                                    }
+                                                    else
+                                                    {
+                                                        @matrixCell.Value
+                                                    }
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 }
             }
+        </div>
+
+        <!--Technical downloads-->
+        @foreach (var assetcategory in Model.AssetCategories ?? new List<AssetCategoryViewModel>())
+        {
+            if (assetcategory.SystemName == "technical_downloads")
+            {
+                <div class="row gx-4">
+                    <div class="col-lg mb-4">
+                        <div class="border rounded-2 px-3 py-2 bg-white">
+                            <h4 class="title text-dark">Downloads</h4>
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                    @foreach (var asset in assetcategory.Assets ?? new List<MediaViewModel>())
+                                    {
+                                        string[] assetstring = asset.Value.Split("/");
+                                        string filename = @assetstring.LastOrDefault();
+                                        <tr>
+                                            <td><i class="fa-regular fa-file"></i></td>
+                                            <td>@filename</td>
+                                            <td><a href="@asset.Value" download>Download</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
         }
     </div>
-
 </section>
+
+<script>
+    //Reloads the page with a query parameter set - used by the unit and variant selectors
+    function setQueryParameter(name, value) {
+        var url = new URL(window.location.href);
+        url.searchParams.set(name, value);
+        window.location.href = url.toString();
+    }
+
+    //Combines the selected option of each variant group into a VariantID and loads it, if the combination exists
+    function selectVariant() {
+        var selector = document.getElementById('variantSelector');
+        var groups = selector.querySelectorAll('[data-variant-group]');
+        var optionIds = [];
+        groups.forEach(function (group) {
+            var checked = group.querySelector('input:checked');
+            if (checked) {
+                optionIds.push(checked.value);
+            }
+        });
+        if (optionIds.length < groups.length) {
+            return;
+        }
+
+        var variantId = optionIds.join('.');
+        var combinations = selector.dataset.combinations.split(',');
+        if (combinations.indexOf(variantId) === -1) {
+            document.getElementById('variantNotAvailable').classList.remove('d-none');
+            return;
+        }
+        setQueryParameter('VariantID', variantId);
+    }
+</script>

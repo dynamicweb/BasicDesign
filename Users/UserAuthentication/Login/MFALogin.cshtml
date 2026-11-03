@@ -1,0 +1,105 @@
+﻿@inherits ViewModelTemplate<UserAuthenticationViewModel>
+@using Dynamicweb.Users.Frontend.UserAuthentication
+@using Dynamicweb.Users.Frontend
+@using Dynamicweb.Rendering
+@using Dynamicweb.Security.UserManagement;
+@using Dynamicweb
+@using System
+
+<div class="mx-auto w-100" style="max-width: 30rem;">
+        @{
+            if(Model.Result == UserAuthenticationResultType.IncorrectLogin)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Translate("The username or password you entered is incorrect. Please try again.")
+                </div>
+            }
+            else if(Model.Result == UserAuthenticationResultType.PasswordLengthInvalid)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Translate("The password you entered does not meet the required length. Please ensure it meets the minimum length criteria and try again.")
+                </div>
+            }
+            else if(Model.Result == UserAuthenticationResultType.ExceededFailedLogOnLimit)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Translate("You have exceeded the maximum number of failed login attempts. Please wait a while before trying again.")
+                </div>
+            }
+            else if(Model.Result == UserAuthenticationResultType.LoginLocked)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Translate("Your account has been locked due to multiple failed login attempts.")
+                </div>
+            }
+            else if(Model.Result == UserAuthenticationResultType.MfaVerificationFailed)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Translate("Mfa verification failed.")
+                </div>
+            }
+            else if(Model.Result == UserAuthenticationResultType.Success)
+            {
+                <div class="alert alert-success" role="alert">
+                    @Translate("You have successfully logged in. Welcome back!")
+                </div>
+            }
+            else if (Model.Result != UserAuthenticationResultType.None
+				&& Model.Result != UserAuthenticationResultType.MfaVerificationRequired)
+            {
+                <div class="alert alert-danger">@Translate(Model.Result.ToString())</div>
+            }
+        }
+
+    <form method="post">
+        <input type="hidden" name="redirect" value="@Model.RedirectAfterLogin">
+		@if(Model.LoginType != LoginType.Normal)
+		{	
+			<input type="hidden" name="dologin" value="1">
+		}
+		@if(Model.Result != UserAuthenticationResultType.MfaVerificationRequired){
+			<div class="form-floating mb-4">
+				<input type="text" class="form-control" id="Username" name="username" placeholder="@Translate("Email")" required>
+				<label for="Username">@Translate("Username")</label>
+			</div>	
+			
+			@if(Model.LoginType == LoginType.Normal || Model.LoginType == LoginType.MFA)
+			{
+				<div class="form-floating mb-4">
+					<input type="password" class="form-control" id="Password" name="password" placeholder="@Translate("Password")" required>
+					<label for="Password">@Translate("Password")</label>
+				</div>
+			}
+			<div class="d-grid align-items-center">
+				<button type="submit" class="btn btn-primary" data-dw-button="primary" id="SignIn">@Translate("Sign in")</button>
+			</div>		
+		}
+		@if(Model.Result == UserAuthenticationResultType.MfaVerificationRequired){	
+			@if(Model.LoginType == LoginType.MagicLinks)
+			{
+				<h6>If your user exists, we will send you an email with a login link</h6>	
+			}
+			@if(Model.LoginType == LoginType.TOTP || Model.LoginType == LoginType.MFA)
+			{
+				<h6>If your user is known, we will send an email with a one-time code</h6>	
+
+				<div class="form-floating mb-4">
+					<input type="text" class="form-control" id="Code" name="code" maxlength="6" inputmode="numeric" pattern="\d{6}" placeholder="@Translate("Code")" required>
+					<label for="Code">@Translate("Code")</label>
+				</div>
+			
+				if(Model.MfaCodeExpiration is not null && Model.MfaCodeExpiration > DateTimeOffset.Now)
+				{
+					TimeSpan? remainingTime = Model.MfaCodeExpiration - DateTimeOffset.Now;
+					<div class="alert alert-danger" role="alert">
+						@Translate($"Remaining code lifetime: {(int)remainingTime?.TotalSeconds} sec.")
+					</div>
+				}		
+
+				<div class="d-grid align-items-center">
+					<button type="submit" class="btn btn-primary" data-dw-button="primary" id="SignIn">@Translate("Sign in")</button>
+				</div>	
+			}
+		}
+    </form>
+</div>
