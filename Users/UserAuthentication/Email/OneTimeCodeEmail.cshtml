@@ -1,0 +1,128 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<OneTimeCodeEmailViewModel>
+@using Dynamicweb.Users.Frontend.UserAuthentication.Email
+@using Dynamicweb.Core.Helpers
+@using System.Globalization
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DynamicWeb One-Time Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+
+        .code {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 25px 0;
+            color: #1a73e8;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .expiration {
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .device-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a73e8;
+            padding: 15px;
+            margin: 30px 0;
+        }
+
+        .warning {
+            background-color: #fef7e0;
+            border-left: 4px solid #f9ab00;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #70757a;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">DynamicWeb®</div>
+
+        <h2>Your one-time code is</h2>
+        <div class="code">@Model.Code</div>
+
+        <p>
+            Please verify you're really you by entering this 6-digit code on your sign in page.
+            This code is valid for @Model.CodeLifetime seconds.
+        </p>
+
+        <div class="expiration">Expiration: @Model.Expiration.ToString()</div>
+
+        <div class="device-info">
+            <h2>We noticed you signed in from this location and device</h2>
+            <div class="info-item">
+                <span class="info-label">Device:</span>
+                @Model.Browser<br>
+                @Model.OperationSystem
+            </div>
+            <div class="info-item">
+                <span class="info-label">IP:</span>
+                @Model.IP
+            </div>
+            <div class="info-item">
+                <span class="info-label">Date:</span>
+                @DateTime.Now.ToString()
+            </div>
+        </div>
+
+        <div class="warning">
+            <p>If you didn’t just try to sign in, we recommend you to contact your administrator</p>
+        </div>
+
+        <div class="footer">
+            <p>This email was sent by Dynamicweb as part of a login session.</p>
+            <p><strong>DynamicWeb®</strong></p>
+        </div>
+    </div>
+</body>
+</html>
